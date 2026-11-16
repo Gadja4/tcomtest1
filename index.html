@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TCOM · Pregătire test grilă laborator</title>
+<meta name="description" content="Simulare de examen, flashcarduri și ghid de învățare pentru testul grilă de laborator TCOM (UTCN).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#e3051b;--red2:#b10014;--redsoft:rgba(227,5,27,.12);
+  --bg:#0a0a0a;--panel:#141414;--panel2:#1b1b1b;--line:#2a2a2a;
+  --ink:#f4f4f4;--mute:#9a9a9a;--ok:#2fbf71;--okbg:rgba(47,191,113,.12);--bad:#ff4d5e;--badbg:rgba(255,77,94,.12);
+  --gold:#d9b25f;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--red)}
+header{background:linear-gradient(180deg,#1a0306 0%,var(--bg) 100%);border-top:3px solid var(--red);border-bottom:1px solid var(--line)}
+.hwrap{max-width:980px;margin:0 auto;padding:26px 18px 0}
+.brand{display:flex;align-items:center;gap:14px}
+.badge{width:46px;height:46px;border-radius:50%;background:repeating-linear-gradient(90deg,var(--red) 0 7px,#000 7px 14px);border:2px solid #fff;box-shadow:0 0 0 2px var(--red)}
+h1{font-family:Oswald,'Arial Narrow',sans-serif;font-weight:700;letter-spacing:.5px;text-transform:uppercase;font-size:28px;margin:0;line-height:1.1}
+h1 span{color:var(--red)}
+.tag{color:var(--mute);font-size:13.5px;margin-top:3px}
+nav{display:flex;gap:4px;margin-top:22px;overflow-x:auto}
+nav a{font-family:Oswald,'Arial Narrow',sans-serif;text-transform:uppercase;letter-spacing:1px;font-size:15px;font-weight:600;color:var(--mute);text-decoration:none;padding:12px 18px;border-bottom:3px solid transparent;white-space:nowrap}
+nav a:hover{color:var(--ink)}
+nav a.on{color:#fff;border-bottom-color:var(--red)}
+main{max-width:980px;margin:0 auto;padding:24px 18px 70px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:16px}
+.card.accent{border-left:4px solid var(--red)}
+h2{font-family:Oswald,'Arial Narrow',sans-serif;text-transform:uppercase;letter-spacing:.5px;font-size:22px;margin:0 0 12px}
+h3{font-family:Oswald,'Arial Narrow',sans-serif;text-transform:uppercase;letter-spacing:.5px;font-size:17px;margin:0 0 10px;color:#fff}
+.mute{color:var(--mute)}.small{font-size:13px}
+.btn{font:600 14px Inter,sans-serif;border:1px solid var(--line);background:var(--panel2);color:var(--ink);border-radius:10px;padding:10px 16px;cursor:pointer;transition:.15s}
+.btn:hover{border-color:var(--red)}
+.btn.p{background:var(--red);border-color:var(--red);color:#fff}
+.btn.p:hover{background:var(--red2)}
+.btn:disabled{opacity:.35;cursor:default}
+.btn.big{font-family:Oswald,'Arial Narrow',sans-serif;text-transform:uppercase;letter-spacing:1px;font-size:18px;padding:14px 28px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.between{justify-content:space-between}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:13px;border:1px solid var(--line);border-radius:99px;padding:6px 12px;cursor:pointer;user-select:none;color:var(--mute);background:var(--panel2)}
+.chip.on{border-color:var(--red);color:#fff;background:var(--redsoft)}
+.chip.static{cursor:default}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.seg button{font:600 13.5px Inter;background:var(--panel2);color:var(--mute);border:0;padding:9px 14px;cursor:pointer;border-right:1px solid var(--line)}
+.seg button:last-child{border-right:0}
+.seg button.on{background:var(--red);color:#fff}
+label.tg{display:flex;gap:8px;align-items:center;font-size:14px;cursor:pointer}
+label.tg input{accent-color:var(--red);width:17px;height:17px}
+.hero{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:14px 0 4px}
+.stat{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:14px}
+.stat b{display:block;font-family:Oswald,'Arial Narrow',sans-serif;font-size:28px;color:#fff}
+.stat span{color:var(--mute);font-size:12.5px}
+/* exam */
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+.timer{font:600 26px 'JetBrains Mono',monospace;background:#000;border:1px solid var(--line);border-radius:10px;padding:4px 14px}
+.timer.low{color:var(--bad);border-color:var(--bad)}
+.pill{display:inline-block;font-size:12px;color:var(--mute);border:1px solid var(--line);border-radius:99px;padding:3px 10px}
+.qn{font-weight:600;font-size:17px;margin:12px 0}
+pre{font:12.5px/1.5 'JetBrains Mono',monospace;background:#000;border:1px solid var(--line);border-left:3px solid var(--red);border-radius:8px;padding:12px;overflow-x:auto;white-space:pre;color:#e8e8e8}
+.opt{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);background:var(--panel2);border-radius:10px;padding:12px 14px;margin:8px 0;cursor:pointer;user-select:none;transition:.12s}
+.opt:hover{border-color:#555}
+.opt.sel{border-color:var(--red);background:var(--redsoft)}
+.opt input{margin-top:3px;width:18px;height:18px;accent-color:var(--red);flex:none}
+.opt .l{font-family:Oswald,'Arial Narrow',sans-serif;font-weight:600;min-width:20px;color:var(--red)}
+.opt.ok{background:var(--okbg);border-color:var(--ok)}
+.opt.bad{background:var(--badbg);border-color:var(--bad)}
+.opt.miss{border-color:var(--ok);border-style:dashed}
+.exp{border-left:3px solid var(--red);padding:10px 14px;margin-top:12px;background:#0f0f0f;border-radius:0 10px 10px 0;font-size:14px}
+.verd{font-weight:700;margin-top:10px}
+.verd.ok{color:var(--ok)}.verd.bad{color:var(--bad)}
+.grid{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px}
+.grid button{width:38px;height:34px;border-radius:8px;border:1px solid var(--line);background:var(--panel2);color:var(--ink);font:600 13px Inter;cursor:pointer}
+.grid button.ans{background:#3a0a10;border-color:var(--red)}
+.grid button.cur{outline:2px solid #fff;outline-offset:1px}
+.grid button.ok{background:var(--ok);border-color:var(--ok);color:#000}
+.grid button.bad{background:var(--bad);border-color:var(--bad);color:#000}
+.score{font-family:Oswald,'Arial Narrow',sans-serif;font-size:54px;line-height:1;color:#fff}
+.score small{font-size:22px;color:var(--mute)}
+/* flashcards */
+.fcwrap{perspective:1400px;margin:8px 0 16px}
+.fc{position:relative;height:300px;transition:transform .5s;transform-style:preserve-3d;cursor:pointer}
+.fc.flip{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:16px;padding:28px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;border:1px solid var(--line)}
+.front{background:radial-gradient(circle at 50% 0%,#2a0508 0%,var(--panel) 60%)}
+.front .q{font-family:Oswald,'Arial Narrow',sans-serif;font-size:26px;font-weight:600;letter-spacing:.3px;margin-top:14px}
+.back{background:var(--panel2);transform:rotateY(180deg);border-color:var(--red)}
+.back .a{font-size:18px;line-height:1.6}
+.back .q2{font-size:13px;color:var(--mute);margin-bottom:12px;font-family:Oswald,'Arial Narrow',sans-serif;text-transform:uppercase;letter-spacing:.5px}
+.prog{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin:6px 0 4px}
+.prog i{display:block;height:100%;background:var(--red);transition:.3s}
+/* guide */
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.lab h3{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.imp{font-size:12px;font-family:Inter;font-weight:600;letter-spacing:0;text-transform:none;padding:3px 10px;border-radius:99px;background:var(--redsoft);color:#ff8a95;border:1px solid var(--red)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+td,th{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-family:Oswald,'Arial Narrow',sans-serif;text-transform:uppercase;letter-spacing:.5px;font-size:12.5px;color:var(--mute);font-weight:500}
+td.pg{white-space:nowrap;font-family:'JetBrains Mono',monospace;font-size:13px;color:#fff}
+.stars{color:var(--red);white-space:nowrap;letter-spacing:1px}
+.stars .o{color:#3a3a3a}
+ol.steps{padding-left:20px;margin:0}
+ol.steps li{margin:6px 0}
+.kbd{font:12px 'JetBrains Mono';border:1px solid var(--line);border-radius:5px;padding:1px 6px;background:#000}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:720px){nav a{padding:12px 10px;font-size:13.5px;letter-spacing:.5px}.hero{grid-template-columns:1fr 1fr}.score{font-size:42px}.two{grid-template-columns:1fr}h1{font-size:22px}.fc{height:340px}.front .q{font-size:22px}}
+footer{border-top:1px solid var(--line);color:var(--mute);font-size:12.5px;text-align:center;padding:22px 18px 30px}
+.hidden{display:none}
+.grid button.half{background:#d9a13a;border-color:#d9a13a;color:#000}
+.pts{font-family:'JetBrains Mono',monospace;font-size:13px;color:#fff;background:#000;border:1px solid var(--line);border-radius:6px;padding:2px 8px}
+.wsw{background:#fff;color:#111;border-radius:8px;overflow:hidden;border:1px solid #444;font:12px/1.35 'Segoe UI',Arial,sans-serif;margin:6px 0 4px}
+.wsw .tb{background:#ececec;border-bottom:1px solid #c8c8c8;padding:5px 8px;display:flex;gap:8px;align-items:center}
+.wsw .tb .dot{width:9px;height:9px;border-radius:50%;background:#d0d0d0}
+.wsw .flt{flex:1;background:#fff;border:1px solid #b9b9b9;border-radius:3px;padding:3px 7px;font-family:'JetBrains Mono',monospace;font-size:11.5px}
+.wsw .flt.on{background:#afffaf}
+.wsw .fin{color:#888}
+.wsw .pl{overflow-x:auto;border-bottom:4px solid #d6d6d6}
+.wsw table{font-size:12px;border-collapse:collapse;width:100%;min-width:640px}
+.wsw th{background:#f4f4f4;color:#222;font:600 11.5px 'Segoe UI',Arial;text-transform:none;letter-spacing:0;border-bottom:1px solid #ccc;padding:3px 6px;white-space:nowrap}
+.wsw td{padding:2px 6px;border:0;white-space:nowrap;color:#111}
+.wsw tr.sel td{background:#3875d7!important;color:#fff}
+.wsw .dt{font-family:'JetBrains Mono',monospace;font-size:11.5px;padding:6px 8px;white-space:pre;overflow-x:auto;border-bottom:4px solid #d6d6d6;color:#111;background:#fff}
+.wsw .hx{font-family:'JetBrains Mono',monospace;font-size:11.5px;padding:6px 8px;white-space:pre;overflow-x:auto;color:#111;background:#fff}
+</style>
+</head>
+<body>
+<header><div class="hwrap">
+  <div class="brand"><div><h1>TCOM <span>·</span> Test grilă laborator</h1><div class="tag">Simulare de examen, flashcarduri și ghid de învățare – Laboratoarele 2–7</div></div></div>
+  <nav id="nav"><a href="#simulare" data-v="simulare">⏱ Simulare examen</a><a href="#flashcarduri" data-v="flashcarduri">🃏 Flashcarduri</a><a href="#ghid" data-v="ghid">📘 Ce învăț</a></nav>
+</div></header>
+<main id="main"></main>
+<footer>Material neoficial, făcut din laboratoarele de TCOM, pentru pregătire. Verifică întotdeauna cu fișele de laborator. · Răspunsurile pot fi 0, 1, 2, 3 sau 4 variante corecte.</footer>
+
+<script>
+// Banca de întrebări. c = indicii variantelor corecte (0-3); gol = niciuna.
+const TOPICS = {
+  model: "Model test (anii trecuți)",
+  osi:   "OSI / TCP-IP (Lab 2)",
+  dev:   "Hub, placă de rețea, switch, MAC (Lab 3)",
+  cab:   "Cablare structurată (Lab 4)",
+  eth:   "Ethernet / 802.3 / Wireshark (Lab 5)",
+  wifi:  "IEEE 802.11 WLAN (Lab 6)",
+  ip:    "IPv4, clase, subrețele (Lab 7)",
+  route: "Rutare / RIP ⚠ fără laborator",
+  app:   "ARP/DHCP/DNS/ICMP/IPv6 ⚠ fără laborator",
+  gen:   "Generator subrețele (infinit)"
+};
+
+let BANK = [
+// ---------------- MODEL ----------------
+{id:"m6",t:"model",q:"Protocolul DHCP este folosit pentru:",o:["Obținerea adresei MAC dacă se cunoaște adresa IP","Obținerea adresei IP dacă se cunoaște adresa MAC","Alocarea automată a unei adrese IP de la un server ARP","Alocarea automată a unei adrese MAC de la un server ARP"],c:[1],
+e:"a) e definiția ARP. c) și d) sunt capcane: nu există „server ARP”, DHCP folosește server DHCP. b) e singura plauzibilă: clientul își știe MAC-ul și primește o adresă IP. ⚠ b) e de fapt definiția clasică RARP; dacă profesorul e pedant, cheia poate fi „niciuna”. Întreabă colegii din anii trecuți care e răspunsul oficial."},
+{id:"m7",t:"model",q:"Protocolul DNS:",o:["Se bazează pe o arhitectură client-server","Este un protocol de strat Aplicație","Serverele DNS stochează perechi nume de domeniu – adresă IP","Serverele DNS ascultă cereri pe portul 53 (standard)"],c:[0,1,2,3],
+e:"Toate patru sunt adevărate. DNS = client-server, strat Aplicație, rezolvă nume → IP, port 53 (UDP pentru interogări obișnuite, TCP pentru transferuri de zonă / răspunsuri mari)."},
+{id:"m8",t:"model",q:"Care dintre următoarele protocoale de rutare folosește IPv6?",o:["RIPv1","RIPv2","RIPng","ICMP"],c:[2],
+e:"RIPng (next generation) e varianta RIP pentru IPv6 (multicast FF02::9, UDP 521). RIPv1/v2 sunt doar IPv4. ICMP nu e protocol de rutare (există ICMPv6, dar nici el nu rutează)."},
+{id:"m9",t:"model",q:"Se consideră următoarea tabelă de rutare. Care dintre afirmații sunt adevărate?",
+code:`R    10.0.0.0/8 [120/2] via 193.226.17.156, 00:00:05, FastEthernet0/0
+     172.27.0.0/24 is subnetted, 1 subnets
+C       172.27.208.0 is directly connected, FastEthernet0/1
+C    192.168.6.0/24 is directly connected, Ethernet0/0/0
+     193.226.17.0/29 is subnetted, 1 subnets
+C       193.226.17.152 is directly connected, FastEthernet0/0
+R    200.10.15.0/24 [120/1] via 193.226.17.156, 00:00:05, FastEthernet0/0
+S*   0.0.0.0/0 is directly connected, Ethernet0/0/0`,
+o:["Ruta către rețeaua 192.168.6.0/24 a fost actualizată prin RIPv1 sau RIPv2 acum 5 secunde","Ruta către rețeaua 40.50.2.0/8 va folosi interfața de ieșire Ethernet0/0/0","În rețeaua 172.27.0.0/24 protocolul RIP nu este activat, deoarece în tabelă nu apar rute învățate prin el","Interfața FastEthernet 0/0 se află în rețeaua 192.168.6.0/24"],c:[1],
+e:"a) 192.168.6.0/24 are codul C (direct conectată), nu R — fals. b) 40.50.x nu se potrivește cu nicio rută specifică → pleacă pe ruta implicită S* 0.0.0.0/0 → Ethernet0/0/0 — ADEVĂRAT. c) Faptul că nu înveți rute pe o interfață NU înseamnă că RIP nu e activat acolo (poate nu există vecin RIP) — fals. d) Fa0/0 e în 193.226.17.152/29 — fals."},
+{id:"m10",t:"model",q:"La activarea opțiunii debug pentru protocolul de rutare RIPv2 s-au obținut următoarele capturi. Care dintre afirmații sunt adevărate?",
+code:`RIP: sending v2 update to 224.0.0.9 via FastEthernet0/0 (200.10.15.1)
+RIP: build update entries
+      10.0.0.0/8 via 0.0.0.0, metric 1, tag 0
+RIP: received v2 update from 200.10.15.2 on FastEthernet0/0
+      172.27.0.0/16 via 0.0.0.0 in 2 hops
+      192.168.6.0/24 via 0.0.0.0 in 2 hops
+      193.226.17.0/24 via 0.0.0.0 in 1 hops`,
+o:["RIPng este activat în rețeaua 200.10.15.0/24","Acest router este direct conectat la rețeaua 10.0.0.0/8","Acest router folosește gateway-ul 200.10.15.2 pentru a ajunge la 10.0.0.0/8","Gateway-ul pentru 172.27.0.0/16 este direct conectat la rețeaua 193.226.17.0/24"],c:[1,3],
+e:"a) Fals: e „v2 update” la 224.0.0.9 → RIPv2 (RIPng ar fi IPv6, FF02::9). b) ADEVĂRAT: routerul anunță 10.0.0.0/8 cu metrica 1 → rețea direct conectată (Cisco anunță rețelele conectate cu metrica 1). c) Fals: el ANUNȚĂ 10/8, nu o învață de la 200.10.15.2. d) ADEVĂRAT: gateway-ul pentru 172.27/16 e 200.10.15.2, care anunță 193.226.17.0/24 la 1 hop → e direct conectat la ea."},
+
+// ---------------- OSI / TCP-IP ----------------
+{id:"o1",t:"osi",q:"Care dintre următoarele sunt straturi ale modelului TCP/IP?",o:["Aplicație","Transport","Internet","Sesiune"],c:[0,1,2],
+e:"TCP/IP are 4 straturi: Aplicație, Transport, Internet, Acces la rețea. Sesiunea există doar în OSI (stratul 5); în TCP/IP e inclusă în Aplicație."},
+{id:"o2",t:"osi",q:"Unitatea de încapsulare (PDU) la stratul Transport din modelul OSI este:",o:["Segmentul (TCP) / datagrama (UDP)","Pachetul","Cadrul","Bitul"],c:[0],
+e:"Transport → segment; Rețea → pachet; Legături de date → cadru; Fizic → bit. Tabelul din Lab 2 — pe de rost."},
+{id:"o3",t:"osi",q:"Care asocieri protocol – strat OSI sunt corecte?",o:["IP – stratul Rețea","UDP – stratul Transport","DNS – stratul Aplicație","Ethernet – stratul Legături de date (și Fizic)"],c:[0,1,2,3],
+e:"Toate corecte. Întrebarea 3 din Lab 2: Ethernet (L2/L1), IP (L3), UDP/TCP (L4), DNS (L7)."},
+{id:"o4",t:"osi",q:"Protocolul ICMP aparține:",o:["Stratului Rețea din modelul OSI","Stratului Transport din modelul OSI","Stratului Internet din modelul TCP/IP","Stratului Aplicație din modelul TCP/IP"],c:[0,2],
+e:"ICMP e încapsulat direct în IP, dar e considerat protocol de strat Rețea (OSI) = Internet (TCP/IP). NU are porturi, deci nu e Transport."},
+{id:"o5",t:"osi",q:"Care protocoale folosesc noțiunea de port?",o:["TCP","UDP","IP","Ethernet"],c:[0,1],
+e:"Porturile sunt concept de strat Transport → TCP și UDP. IP lucrează cu adrese IP, Ethernet cu adrese MAC."},
+{id:"o6",t:"osi",q:"Care protocoale folosesc noțiunea de adresă MAC?",o:["Ethernet","ARP","IEEE 802.11","UDP"],c:[0,1,2],
+e:"Ethernet și 802.11 au câmpuri de adresă MAC în antet. ARP are explicit câmpurile Sender/Target MAC (rolul lui e să afle MAC-ul). UDP lucrează cu porturi."},
+{id:"o7",t:"osi",q:"Referitor la încapsulare / decapsulare:",o:["Fiecare strat adaugă propriul antet datelor primite de la stratul superior","La receptor antetele sunt eliminate de jos în sus (decapsulare)","La stratul Legături de date se adaugă și un trailer (FCS)","Încapsularea are loc la receptor"],c:[0,1,2],
+e:"Încapsularea are loc la emițător (sus → jos), decapsularea la receptor (jos → sus). La L2 se adaugă și trailer-ul FCS."},
+{id:"o8",t:"osi",q:"Straturile 5, 6 și 7 din OSI (Sesiune, Prezentare, Aplicație) corespund în modelul TCP/IP:",o:["Stratului Aplicație","Stratului Transport","Stratului Internet","Stratului Acces la rețea"],c:[0],
+e:"OSI 5-6-7 → Aplicație. OSI 4 → Transport. OSI 3 → Internet. OSI 1-2 → Acces la rețea."},
+{id:"o9",t:"osi",q:"Procedura TCP handshake:",o:["Are secvența SYN, SYN-ACK, ACK","Este folosită pentru stabilirea unei conexiuni TCP","Este folosită și de UDP","Are secvența SYN, ACK, FIN"],c:[0,1],
+e:"Three-way handshake: SYN → SYN/ACK → ACK, pentru stabilirea conexiunii. UDP e fără conexiune. FIN e pentru închidere."},
+{id:"o10",t:"osi",q:"În Wireshark, la analiza unui pachet:",o:["Linia „Frame” conține informații despre captură adăugate de Wireshark (momentul sosirii, lungimea cadrului)","Linia „Ethernet II” conține adresa MAC destinație, adresa MAC sursă și câmpul Type","Linia „Frame” conține adresele IP sursă și destinație","Linia „Ethernet II” conține porturile TCP"],c:[0,1],
+e:"Întrebarea 1b din Lab 2: Frame = informații despre captură (nu e un antet transmis); Ethernet II = antetul real de strat 2. IP-urile sunt în antetul IP, porturile în TCP/UDP."},
+{id:"o11",t:"osi",q:"La o cerere/răspuns cu o pagină web, care afirmații sunt adevărate?",o:["HTTP operează pe stratul Aplicație","TCP operează pe stratul Transport","IP operează pe stratul Rețea","Datele HTTP sunt transportate direct în mesaje ICMP"],c:[0,1,2],
+e:"Web: HTTP (L7) peste TCP (L4, port 80/443) peste IP (L3) peste Ethernet (L2). ICMP nu transportă date de aplicație."},
+{id:"o12",t:"osi",q:"Care afirmații sunt adevărate?",o:["Modelul OSI are 7 straturi","Modelul TCP/IP are 4 straturi","PDU-ul stratului Fizic este bitul","PDU-ul stratului Rețea este cadrul"],c:[0,1,2],
+e:"PDU-ul stratului Rețea e pachetul. Cadrul e la Legături de date."},
+{id:"o13",t:"osi",q:"Un pachet ARP capturat în Wireshark:",o:["Nu are antet de strat Transport","Este încapsulat direct într-un cadru Ethernet","Este încapsulat într-un pachet IP","Are Ethertype 0x0806"],c:[0,1,3],
+e:"De ce „lipsesc” straturi (Lab 2, 1c): ARP stă direct peste Ethernet (Ethertype 0x0806), fără IP și fără TCP/UDP."},
+{id:"o14",t:"osi",q:"Care protocoale folosesc noțiunea de adresă IP?",o:["IP","ICMP","ARP","Ethernet"],c:[0,1,2],
+e:"IP evident; ICMP e transportat în IP; ARP conține câmpurile Sender/Target IP (asta rezolvă: IP → MAC). Ethernet nu știe de IP."},
+{id:"o15",t:"osi",q:"Stratul Legături de date din modelul OSI:",o:["Folosește adrese fizice (MAC)","Are cadrul ca unitate de încapsulare","Realizează rutarea între rețele folosind adrese IP","Este stratul pe care operează switch-urile și plăcile de rețea"],c:[0,1,3],
+e:"Rutarea cu IP e la stratul Rețea (routere). Legături de date: MAC, cadre, switch-uri, plăci de rețea."},
+
+// ---------------- LAB 3 ----------------
+{id:"d1",t:"dev",q:"Hub-ul:",o:["Operează la nivelul stratului Fizic din modelul OSI","Este un repetor multiport: repetă semnalul primit pe un port către toate celelalte porturi","Trimite fiecare cadru doar către portul la care e conectată stația destinație","Asigură interconectarea stațiilor de lucru în topologie stea"],c:[0,1,3],
+e:"Hub = L1, repetor multiport, topologie stea. Trimiterea doar pe portul destinație e comportamentul switch-ului."},
+{id:"d2",t:"dev",q:"Switch-ul:",o:["Operează la nivelul stratului Legături de date","Trimite fiecare cadru doar către portul de ieșire la care e conectată stația destinație","Menține o tabelă de corespondență între porturile sale și adresele MAC","Operează pe stratul Rețea și rutează pe baza adreselor IP"],c:[0,1,2],
+e:"Switch = L2, legătură temporară între porturi pe durata cadrului, tabelă MAC ↔ port. Rutarea IP e la router (L3)."},
+{id:"d3",t:"dev",q:"Placa de rețea:",o:["Operează la nivelul stratului Legături de date","Este cel mai des întâlnit echipament de pe acest strat","Are adresa MAC înscrisă pe ea","Își schimbă adresa MAC când calculatorul e mutat în altă rețea"],c:[0,1,2],
+e:"Când muți PC-ul în altă rețea se schimbă adresa IP (depinde de rețea); MAC-ul rămâne același (e înscris pe placă)."},
+{id:"d4",t:"dev",q:"Adresa MAC:",o:["Are o lungime de 48 de biți","Se reprezintă prin 12 cifre hexazecimale","Primii 24 de biți reprezintă OUI, care identifică producătorul plăcii","Are o lungime de 32 de biți"],c:[0,1,2],
+e:"48 biți = 6 octeți = 12 cifre hexa. Primii 24 biți = OUI. 32 biți e IPv4."},
+{id:"d5",t:"dev",q:"Referitor la biții speciali ai adresei MAC:",o:["Bitul I/G = 1 înseamnă adresă multicast/broadcast","Bitul I/G = 0 înseamnă adresă unicast","Bitul U/L = 1 înseamnă adresă administrată local (LAA)","Bitul U/L = 0 înseamnă adresă administrată local"],c:[0,1,2],
+e:"I/G (bitul 8 din primul octet = LSB): 0 unicast, 1 multicast/broadcast. U/L (bitul 7): 0 = universal (UAA, de la producător), 1 = local (LAA, de la administrator)."},
+{id:"d6",t:"dev",q:"La trecerea unui calculator dintr-o rețea în alta:",o:["Se modifică adresa IP","Adresa MAC rămâne neschimbată","Se modifică adresa MAC","Adresa IP depinde de rețea"],c:[0,1,3],
+e:"Lab 3, slide „Adrese IP și MAC”: IP-ul depinde de rețea → se schimbă; MAC-ul e pe placă → rămâne."},
+{id:"d7",t:"dev",q:"Ce comenzi afișează adresa MAC a plăcii de rețea a unui calculator?",o:["getmac","ipconfig /all","show mac-address-table","ip addr (Linux)"],c:[0,1,3],
+e:"getmac și ipconfig /all (Windows), ip addr (Linux). show mac-address-table e comandă de switch Cisco și afișează tabela switch-ului."},
+{id:"d8",t:"dev",q:"Comenzi pentru monitorizarea unui switch Cisco:",o:["show interface fastEthernet 0/23 – starea unei interfețe","show version – detalii despre configurația hardware","show flash – fișierele imagine ale sistemului de operare și configurația de pornire","show mac-address-table – tabela de corespondență port ↔ adresă MAC"],c:[0,1,2,3],
+e:"Toate patru exact ca în Lab 3. Asocierea comandă ↔ ce afișează e material perfect de grilă."},
+{id:"d9",t:"dev",q:"Switch-ul Cisco Catalyst C2950:",o:["Este un comutator de strat 2 cu management","Are 24 de porturi 10/100 Mbit/s (IEEE 802.3)","Rulează sistemul de operare Cisco IOS","Este un router de strat 3"],c:[0,1,2],
+e:"Comutator de strat 2 cu management, 24 porturi 10/100, Cisco IOS (Internetwork Operating System)."},
+{id:"d10",t:"dev",q:"Detaliile afișate pentru o conexiune de rețea (Details / ipconfig /all) includ:",o:["Adresa MAC","Masca de subrețea","Adresa Default Gateway","Adresele serverelor DNS"],c:[0,1,2,3],
+e:"Toate: MAC, IPv4, mască, default gateway, servere DNS."},
+{id:"d11",t:"dev",q:"Referitor la configurarea unui switch:",o:["În Cisco IOS lista de comenzi disponibile se afișează cu tasta ?","Numele unei comenzi urmat de spațiu și ? oferă detalii despre ea","Configurarea se realizează de obicei prin interfața serială","Meniul de configurare este identic la toți producătorii"],c:[0,1,2],
+e:"Meniul diferă de la un producător la altul. Restul — din Lab 3."},
+{id:"d12",t:"dev",q:"Adresa MAC 02:00:5E:10:00:01 este:",o:["Unicast","Administrată local","Multicast","Administrată universal"],c:[0,1],
+e:"Primul octet 0x02 = 0000 0010. LSB (I/G) = 0 → unicast. Bitul U/L = 1 → administrată local."},
+{id:"d13",t:"dev",q:"Adresa MAC 01:00:5E:00:00:FB este:",o:["Multicast","Unicast","Broadcast","Administrată universal (U/L = 0)"],c:[0,3],
+e:"0x01 = 0000 0001 → I/G = 1 → multicast (broadcast e doar FF:FF:FF:FF:FF:FF). U/L = 0 → universală."},
+{id:"d14",t:"dev",q:"Adresa de broadcast Ethernet:",o:["Se scrie FF:FF:FF:FF:FF:FF","Are bitul I/G egal cu 1","Este 00:00:00:00:00:00","Este 255.255.255.255"],c:[0,1],
+e:"Toți biții 1, deci și I/G = 1. 255.255.255.255 e broadcast-ul IP local, nu MAC."},
+{id:"d15",t:"dev",q:"Adresa MAC AC:DE:48:00:11:22 este:",o:["Unicast","Administrată universal","Broadcast","Multicast"],c:[0,1],
+e:"0xAC = 1010 1100. LSB = 0 → unicast. U/L = 0 → universală. Truc: a doua cifră hexa pară → unicast; dacă e 2, 6, A, E → locală."},
+{id:"d16",t:"dev",q:"Care echipamente de interconectare operează pe stratul Legături de date?",o:["Switch-ul","Placa de rețea","Hub-ul","Router-ul"],c:[0,1],
+e:"Hub = Fizic (L1). Router = Rețea (L3). Switch și placă de rețea = Legături de date (L2)."},
+
+// ---------------- LAB 4 ----------------
+{id:"c1",t:"cab",q:"Patch cord-ul:",o:["Interconectează echipamentele active (hub, switch, placă de rețea) la elementele cablării structurate","Este flexibil, multifilar, cu atenuare mai mare decât cablul folosit pentru cablarea orizontală","În zona de lucru are lungimea tipică de 3 m","Pentru un traseu de cablu, lungimea totală a patch cord-urilor este de 10 m"],c:[0,1,2,3],
+e:"Toate din Lab 4. Cifrele: 3 m (zona de lucru, tipic), 6 m (dulap telecom, maxim), 10 m (total pe traseu)."},
+{id:"c2",t:"cab",q:"Lungimea maximă a unui patch cord în dulapul de telecomunicații este:",o:["6 m","3 m","90 m","10 m"],c:[0],
+e:"Dulap: max 6 m. Zona de lucru: tipic 3 m. Total pe traseu: 10 m. Legătura: max 90 m."},
+{id:"c3",t:"cab",q:"Cablul straight-through:",o:["Are aceeași conectorizare la ambele capete","Se folosește pentru legătura PC – switch","Se folosește pentru legătura PC – router","Se folosește pentru legătura switch – hub"],c:[0,1],
+e:"Regula din lab: echipamente de TIPURI DIFERITE → straight-through. Infrastructură: switch, bridge, hub. Terminale: PC, router. PC–router = același tip → crossover. Switch–hub = același tip → crossover."},
+{id:"c4",t:"cab",q:"Cablul crossover:",o:["Are conectorizări diferite la cele două capete","Se folosește pentru legătura PC – router","Se folosește pentru legătura switch – switch","Se folosește pentru legătura PC – switch"],c:[0,1,2],
+e:"Același tip de echipament → crossover. PC–switch e straight-through."},
+{id:"c5",t:"cab",q:"Care afirmații sunt adevărate?",o:["Majoritatea echipamentelor moderne pot inversa automat pinii de recepție și transmisie, deci cablul crossover nu mai e necesar","Clestele de sertizare se folosește pentru mufe RJ11 (telefonie) și RJ45 (Ethernet)","Punch-down tool se folosește pentru conectorizarea prizelor de telecomunicații","OTDR-ul se folosește pentru sertizarea mufelor RJ45"],c:[0,1,2],
+e:"OTDR = reflectometru pentru fibră optică, nu unealtă de sertizare."},
+{id:"c6",t:"cab",q:"La conectorizarea prizelor de telecomunicații și a patch panel-urilor:",o:["Se respectă torsadarea firelor","Se cablează toate cele 4 perechi dintr-o priză","Se respectă o lungime maximă de 13 mm la conector fără torsadare","Se cablează doar 2 perechi, celelalte 2 rămân de rezervă"],c:[0,1,2],
+e:"Toate 4 perechile; max 13 mm netorsadat la conector."},
+{id:"c7",t:"cab",q:"Referitor la legăturile definite pentru măsurători:",o:["Legătura de bază (basic link / contractor link) include traseele între TC și TO","Măsurătorile pe legătura de bază sunt efectuate de firma care a realizat sistemul de cablare","Canalul (channel / user link) = legătura de bază + cablarea din zona de lucru","Măsurătorile pe canal se fac de obicei înainte de conectarea echipamentelor active"],c:[0,1,2,3],
+e:"TC = dulap de telecomunicații, TO = priză de telecomunicații. Toate patru din Lab 4."},
+{id:"c8",t:"cab",q:"Ce parametri se testează pentru o legătură din cablarea structurată?",o:["Harta firelor","Lungimea legăturii – maxim 90 m","Atenuarea","NEXT, PS-NEXT"],c:[0,1,2,3],
+e:"Cei patru parametri din Lab 4."},
+{id:"c9",t:"cab",q:"OTDR (Optical Time Domain Reflectometer) se folosește pentru:",o:["Măsurarea atenuării","Identificarea defectelor pe fibra optică","Detectarea conectorizării slabe","Testarea hărții firelor unui cablu UTP cu LED-uri"],c:[0,1,2],
+e:"OTDR = fibră optică. Harta firelor UTP se testează cu testoare cu LED-uri."},
+{id:"c10",t:"cab",q:"Conform laboratorului, care sunt echipamente de tip infrastructură?",o:["Switch-ul","Bridge-ul","Hub-ul","Router-ul"],c:[0,1,2],
+e:"Infrastructură: switch, bridge, hub. Terminale: PC, router. (Routerul e trecut la terminale — capcană clasică.)"},
+{id:"c11",t:"cab",q:"Ce cablu e necesar între două PC-uri (fără inversare automată a pinilor)?",o:["Crossover","Straight-through","Rollover / consolă","Oricare, nu contează"],c:[0],
+e:"PC–PC = același tip → crossover."},
+{id:"c12",t:"cab",q:"Echipamentele de test pentru cablare includ:",o:["Testoare pentru harta firelor (de obicei cu LED-uri)","Testoare pentru toți cei patru parametri la diferite frecvențe","Testoare pentru măsurarea puterii optice pe ansamblul legăturii","OTDR"],c:[0,1,2,3],
+e:"Toate patru apar pe slide-ul „Echipamente de test”. Exemplu din lab: Fluke MicroScanner2 Pro."},
+
+// ---------------- LAB 5 ----------------
+{id:"e1",t:"eth",q:"Referitor la câmpurile Preambul și SFD ale cadrului Ethernet:",o:["Operează la nivelul stratului Fizic (L1)","Sunt filtrate de placa de rețea și nu apar în Wireshark","Și biții din câmpul FCS sunt filtrați de placa de rețea","Wireshark consideră că începutul cadrului este adresa MAC destinație"],c:[0,1,2,3],
+e:"Toate din fișa Laborator Ethernet."},
+{id:"e2",t:"eth",q:"Lungimea antetului Ethernet II (așa cum apare în Wireshark) este:",o:["14 octeți","18 octeți","20 octeți","8 octeți"],c:[0],
+e:"6 (MAC dest) + 6 (MAC sursă) + 2 (Type) = 14. 18 ar fi cu FCS, 8 = preambul+SFD, 20 = antet IP minim."},
+{id:"e3",t:"eth",q:"Valori ale câmpului Ethertype:",o:["IPv4 – 0x0800","IPv6 – 0x86DD","ARP – 0x0806","IPv6 – 0x0800"],c:[0,1,2],
+e:"De memorat: 0x0800 IPv4, 0x0806 ARP, 0x86DD IPv6."},
+{id:"e4",t:"eth",q:"Referitor la dimensiunea minimă a unui cadru Ethernet:",o:["Este de 64 de octeți","Dacă nu e îndeplinită, cadrul e suplimentat la sfârșit cu biți de 0 (Pad)","Este de 1518 octeți","Completarea se face cu biți de 1"],c:[0,1],
+e:"Minim 64 octeți; completare cu 0 (Pad). 1518 e maximul."},
+{id:"e5",t:"eth",q:"De ce adresa MAC destinație apare înaintea adresei MAC sursă?",o:["Pentru ca echipamentul să poată decide cât mai devreme dacă un cadru îi este destinat, iar în caz contrar să nu continue procesarea","Pentru că FCS se calculează doar peste adresa sursă","Pentru că așa cere protocolul IP","Pentru a reduce dimensiunea cadrului"],c:[0],
+e:"Formularea din Lab 5 — de memorat."},
+{id:"e6",t:"eth",q:"Opțiuni de captură în Wireshark:",o:["Resolve MAC addresses – afișează producătorul plăcii de rețea pe baza OUI","Promiscuous mode – capturează tot traficul, inclusiv cel care nu e destinat acestei plăci","Capture filter – capturează doar anumite pachete (reduce dimensiunea fișierului)","Filtrul de afișare șterge definitiv pachete din fișierul de captură"],c:[0,1,2],
+e:"Filtrul de afișare doar ASCUNDE pachete, nu le șterge."},
+{id:"e7",t:"eth",q:"Fereastra principală Wireshark:",o:["Panoul superior afișează pachetele capturate, colorate în funcție de protocol","Panoul de mijloc afișează informațiile corespunzătoare straturilor OSI pentru pachetul selectat","Panoul inferior afișează conținutul pachetului în binar/hexa, așa cum a fost capturat de placa de rețea","Panoul inferior afișează doar datele de strat Aplicație"],c:[0,1,2],
+e:"Cele trei panouri din Lab 5."},
+{id:"e8",t:"eth",q:"Diferențe între un cadru IEEE 802.3 și un cadru Ethernet II:",o:["802.3 folosește câmpul Length în locul câmpului Ethertype","La 802.3 antetul este urmat de un antet 802.2 LLC","La 802.3 protocolul de strat superior e identificat în antetul LLC","Ethernet II folosește câmpul Length în locul Ethertype"],c:[0,1,2],
+e:"802.3: Length + LLC (DSAP/SSAP). Ethernet II: Ethertype."},
+{id:"e9",t:"eth",q:"Dimensiunile antetelor:",o:["Antetul IEEE 802.3 – 14 octeți","Antetul 802.2 LLC – 3 octeți","Antetul 802.2 LLC – 8 octeți","Antetul IEEE 802.3 – 18 octeți"],c:[0,1],
+e:"802.3: 6+6+2 = 14. LLC: DSAP + SSAP + Control = 3."},
+{id:"e10",t:"eth",q:"Cum se diferențiază un cadru 802.3 de un cadru Ethernet II?",o:["Dacă valoarea câmpului Type/Length ≤ 1500 (0x05DC), e lungime → 802.3","Dacă valoarea câmpului Type/Length ≥ 1536 (0x0600), e Ethertype → Ethernet II","Prin lungimea preambulului","Prin lungimea adreselor MAC"],c:[0,1],
+e:"Valoare mică = lungime (802.3); valoare mare = tip (Ethernet II)."},
+{id:"e11",t:"eth",q:"Un cadru 802.3 are câmpul de date de doar 38 de octeți. Padding-ul necesar este:",o:["8 octeți","46 octeți","0 octeți","26 octeți"],c:[0],
+e:"Minim 46 octeți de date → 46 − 38 = 8 (exemplul din Lab 5)."},
+{id:"e12",t:"eth",q:"Într-un pachet ARP Request:",o:["Target MAC 00:00:00:00:00:00 înseamnă că adresa MAC țintă e necunoscută (ea e cea căutată)","Adresa destinație din antetul Ethernet e broadcast FF:FF:FF:FF:FF:FF","Câmpul Protocol Type e IP (0x0800) pentru că ARP rezolvă adrese IPv4","Câmpul Type din antetul Ethernet este 0x0800"],c:[0,1,2],
+e:"Pachetul 64 din lab. Protocol Type = 0x0800, dar Type-ul Ethernet pentru ARP e 0x0806."},
+{id:"e13",t:"eth",q:"Stația A (rețeaua 1) trimite un pachet către Serverul B din altă rețea, printr-un router. Pachetul care pleacă de la A are:",o:["IP destinație = IP-ul Serverului B","MAC destinație = MAC-ul interfeței routerului (default gateway)","MAC destinație = MAC-ul Serverului B","IP destinație = IP-ul routerului"],c:[0,1],
+e:"IP-urile rămân cap-coadă, MAC-urile se schimbă la fiecare hop. Spre altă rețea, MAC dest = gateway."},
+{id:"e14",t:"eth",q:"Filtrul Wireshark eth.dst[0] & 1 afișează:",o:["Cadre multicast","Cadre broadcast","Doar cadre unicast","Doar cadre IEEE 802.11"],c:[0,1],
+e:"Testează bitul I/G din MAC-ul destinație: 1 = multicast/broadcast."},
+{id:"e15",t:"eth",q:"Pentru a găsi cadre IEEE 802.3 într-o captură se poate folosi filtrul:",o:["llc","eth.dst[0] & 1","arp","ip"],c:[0],
+e:"Cadrele 802.3 conțin antet 802.2 LLC → filtrul llc."},
+{id:"e16",t:"eth",q:"Referitor la payload-ul cadrului Ethernet:",o:["Începe de fapt cu antetul protocolului de strat superior (ex. IP)","Câmpul Ethertype indică ce protocol e încapsulat în payload","Conține adresa MAC sursă","La cadrele 802.3 primii octeți ai câmpului de date sunt antetul 802.2"],c:[0,1,3],
+e:"MAC-urile sunt în antet, nu în payload."},
+{id:"e17",t:"eth",q:"Wireshark este:",o:["Un instrument software pentru captura și analiza traficului din rețea","Capabil să decodeze un număr foarte mare de protocoale","Un echipament hardware pentru testarea cablurilor UTP","Un protocol de rutare"],c:[0,1],
+e:"Definiția din Lab 5."},
+
+// ---------------- LAB 6 ----------------
+{id:"w1",t:"wifi",q:"Cadrul Beacon:",o:["Este un cadru de management","Este transmis periodic de Access Point folosind o adresă destinație broadcast","Anunță prezența Access Point-ului și modul în care e configurat","Este folosit pentru descoperirea și conectarea la rețelele wireless"],c:[0,1,2,3],
+e:"Toate patru = definiția din Lab 6."},
+{id:"w2",t:"wifi",q:"Într-un cadru Beacon:",o:["Receiver address și Destination address au valoarea FF:FF:FF:FF:FF:FF","BSS Id are aceeași valoare cu Source address, pentru că sursa e Access Point-ul","BSS Id este adresa de broadcast","Source address este adresa de broadcast"],c:[0,1],
+e:"Destinație broadcast; sursa = AP, deci BSSID = SA."},
+{id:"w3",t:"wifi",q:"Informații transportate în cadrul Beacon:",o:["Intervalul de timp dintre cadrele Beacon","Numele rețelei (SSID)","Canalul folosit","Ratele de transfer acceptate"],c:[0,1,2,3],
+e:"Toate patru apar pe slide-ul din Lab 6."},
+{id:"w4",t:"wifi",q:"Cum se poate demonstra, pe baza câmpurilor de adresă, că un cadru 802.11 NU a fost emis de Access Point?",o:["Source address este diferită de BSS Id","Este un cadru de date trimis de o stație către sistemul de distribuție (To DS = 1)","Source address este egală cu BSS Id","Receiver address este broadcast"],c:[0,1],
+e:"Sursă ≠ BSSID → emițătorul e o stație (cadrul 431 din fișă)."},
+{id:"w5",t:"wifi",q:"AirPcap:",o:["Este o colecție de drivere și instrumente hardware pentru captura pachetelor IEEE 802.11 în Windows","Captura realizată poate fi analizată apoi cu Wireshark","Este o metodă de criptare WLAN","Este sistemul de operare al switch-urilor Cisco"],c:[0,1],
+e:"Definiția din Lab 6."},
+{id:"w6",t:"wifi",q:"Configurarea unui Access Point:",o:["Se face folosind serverul web inclus în Access Point","Conectarea se face din browser la adresa IP a Access Point-ului","Setup → Basic Setup: conexiunea la ISP (DHCP, IP static, PPPoE) și opțiunile LAN, inclusiv serverul DHCP","Wireless → Basic Wireless Settings: protocolul (802.11 b/g/n), SSID, lățimea canalului (20/40 MHz), canalul și transmisia SSID"],c:[0,1,2,3],
+e:"Toate patru din Lab 6. Știi ce e în fiecare meniu."},
+{id:"w7",t:"wifi",q:"Securitatea wireless (Wireless → Wireless Security):",o:["Se recomandă folosirea WPA/WPA2, nu WEP","Se recomandă WEP pentru că e cel mai sigur","Opțiunile disponibile: Disabled, WEP, WPA, WPA2","Se referă la opțiuni de criptare și autentificare"],c:[0,2,3],
+e:"Laboratorul spune explicit: WPA/WPA2, nu WEP."},
+{id:"w8",t:"wifi",q:"Dezactivarea transmisiei SSID în cadrele Beacon:",o:["Rețeaua nu mai apare în lista de rețele disponibile","Un utilizator valid se poate conecta manual","Un atacator poate captura traficul pentru a afla detaliile necesare conectării","Împiedică complet conectarea unui atacator"],c:[0,1,2],
+e:"Ascunderea SSID-ului nu e securitate reală."},
+{id:"w9",t:"wifi",q:"Filtrarea pe baza adresei MAC pe un AP:",o:["Stațiile cu anumite adrese MAC vor avea sau nu acces la rețea","Un atacator poate captura traficul pentru a afla o adresă MAC acceptată, pe care o poate folosi","Criptează traficul wireless","Operează pe stratul Aplicație"],c:[0,1],
+e:"Filtrul MAC se ocolește prin falsificarea MAC-ului. Nu criptează nimic."},
+{id:"w10",t:"wifi",q:"Politicile de restricționare a accesului pe un AP:",o:["Se pot baza pe adresa MAC sau IP a stațiilor","Pot restricționa accesul la anumite servicii, aplicații, site-uri, protocoale","Se pot aplica în intervale de timp specificate","Se pot baza doar pe SSID"],c:[0,1,2],
+e:"Lab 6: pe MAC sau IP, pentru servicii/aplicații/site-uri/protocoale, pe intervale orare."},
+{id:"w11",t:"wifi",q:"O cheie WEP pe 40 de biți, de exemplu 'cafeacafea':",o:["Are 10 caractere hexazecimale","40 biți = 10 cifre hexa × 4 biți","WPA-PSK cu AES este mai sigur decât WEP","Are 40 de caractere hexazecimale"],c:[0,1,2],
+e:"1 cifră hexa = 4 biți → 40 biți = 10 cifre."},
+{id:"w12",t:"wifi",q:"Referitor la canalul radio al unui AP:",o:["Poate fi ales automat cu programe de Site Survey, pentru a minimiza interferențele cu dispozitivele din jur","Lățimea canalului poate fi 20 sau 40 MHz","Este anunțat în cadrele Beacon","Se configurează în Setup → Basic Setup, împreună cu conexiunea la ISP"],c:[0,1,2],
+e:"Canalul e în Wireless → Basic Wireless Settings."},
+{id:"w13",t:"wifi",q:"Un cadru wireless de date care transportă o cerere web (ex. cadrul 431) conține:",o:["IEEE 802.11 pe stratul Legături de date","IP pe stratul Rețea","TCP pe stratul Transport","Un antet Ethernet II cu Ethertype, exact ca pe o legătură prin cablu"],c:[0,1,2],
+e:"Pe aer, stratul 2 e 802.11 (cu încapsulare LLC), nu Ethernet II."},
+{id:"w14",t:"wifi",q:"După activarea filtrării MAC care blochează Laptopul 2 (Packet Tracer):",o:["Ping-ul de la Laptopul 2 la AP eșuează","Ping-ul între Laptopul 1 și Laptopul 2 eșuează","Laptopul 1 poate face în continuare ping la AP","Laptopul 2 se poate conecta în continuare normal"],c:[0,1,2],
+e:"Laptopul 2 nu se mai asociază → nu are conectivitate. Laptopul 1 nu e afectat."},
+
+// ---------------- LAB 7 ----------------
+{id:"i1",t:"ip",q:"Clasele de adrese IPv4 – domeniile primului octet:",o:["Clasa A: 0 – 127","Clasa B: 128 – 191","Clasa C: 192 – 223","Clasa D: 224 – 239"],c:[0,1,2,3],
+e:"A: primul bit 0; B: 10; C: 110; D: 1110 (multicast); E: 1111 (rezervată). În lab clasa E e dată 240–247."},
+{id:"i2",t:"ip",q:"Domeniile de adrese IPv4 private:",o:["10.0.0.0 – 10.255.255.255","172.16.0.0 – 172.31.255.255","192.168.0.0 – 192.168.255.255","172.32.0.0 – 172.63.255.255"],c:[0,1,2],
+e:"Lab-ul zice cu semn de exclamare: trebuie să recunoști o adresă privată. 172.16–172.31!"},
+{id:"i3",t:"ip",q:"Care dintre următoarele adrese sunt private?",o:["172.27.214.165","192.169.1.1","10.200.3.4","172.15.0.1"],c:[0,2],
+e:"172.27 ∈ 172.16–31 ✓. 192.169 ≠ 192.168 ✗. 10.x ✓. 172.15 e sub 172.16 ✗."},
+{id:"i4",t:"ip",q:"Adresele IPv4 private:",o:["Nu sunt vizibile dinspre Internet","Pot fi reutilizate","Sunt rutate normal în Internet","Sunt unice la nivel mondial"],c:[0,1],
+e:"Rezolvarea lipsei de adrese IPv4: nevizibile din Internet, reutilizabile."},
+{id:"i5",t:"ip",q:"Rețele de clasă A rezervate:",o:["127.0.0.0 – 127.255.255.255 e destinată exclusiv adreselor de loopback","Prima adresă din rețeaua 0 (0.0.0.0) e adresa IPv4 nespecificată","10.0.0.0 e rezervată pentru loopback","Rețeaua 127 aparține clasei B"],c:[0,1],
+e:"De aceea clasa A are 2^7 − 2 rețele utilizabile."},
+{id:"i6",t:"ip",q:"Care afirmații sunt adevărate?",o:["Adresa cu toți biții de identificare a echipamentului în 0 este adresa de rețea","Adresa cu toți biții de identificare a echipamentului în 1 este adresa de broadcast direct","Adresa de broadcast local este 255.255.255.255","Prima adresă utilizabilă e rezervată obligatoriu pentru gateway"],c:[0,1,2],
+e:"Cele 2 adrese scăzute: rețea și broadcast direct. Gateway-ul poate avea orice adresă validă."},
+{id:"i7",t:"ip",q:"Măștile implicite ale claselor:",o:["Clasa A – 255.0.0.0","Clasa B – 255.255.0.0","Clasa C – 255.255.255.0","Clasa C – 255.255.0.0"],c:[0,1,2],e:"A /8, B /16, C /24."},
+{id:"i8",t:"ip",q:"Numărul de rețele / echipamente:",o:["Clasa C: 2^8 − 2 = 254 echipamente într-o rețea","Clasa B: 2^16 − 2 = 65534 echipamente într-o rețea","Clasa A: 2^7 − 2 = 126 rețele utilizabile","Clasa C: 2^24 rețele"],c:[0,1,2],
+e:"Clasa C are 2^21 rețele. Clasa B: 2^14 rețele. Clasa A: 2^24 − 2 echipamente."},
+{id:"i9",t:"ip",q:"Pentru adresa 172.27.214.165 cu masca 255.255.240.0 (Lab 7, Problema 1):",o:["Adresa subrețelei este 172.27.208.0","Adresa de broadcast direct este 172.27.223.255","Identificatorul subrețelei este 13 (1101)","Este a 14-a subrețea utilizabilă"],c:[0,1,2],
+e:"Clasa B → 4 biți de subrețea (240 = 11110000). 214 = 1101 0110 → id 1101 = 13. E a 14-a din total, dar a 13-a UTILIZABILĂ (0000 nu se folosește)."},
+{id:"i10",t:"ip",q:"Regula de construire a măștii de subrețea:",o:["Bit 1 pe pozițiile care identifică clasa, rețeaua sau subrețeaua","Bit 0 pe pozițiile care identifică echipamentul","Masca are 32 de biți și se scrie în format zecimal cu punct","Bit 1 pe pozițiile care identifică echipamentul"],c:[0,1,2],e:"Masca = hartă a adresei."},
+{id:"i11",t:"ip",q:"Cu n biți pentru identificatorul de subrețea (convenția din laborator):",o:["Se pot utiliza 2^n − 2 subrețele","Prima și ultima subrețea nu se utilizează","Numărul minim de biți de subrețea este 2","Cu 1 bit de subrețea se obțin 2 subrețele utilizabile"],c:[0,1,2],
+e:"Prima subrețea se suprapune cu adresa rețelei, ultima cu broadcast-ul rețelei. 2^1 − 2 = 0 → minim 2 biți."},
+{id:"i12",t:"ip",q:"Adresa binară 10001100.11110000.00001010.01100101 în format zecimal cu punct este:",o:["140.240.10.101","140.240.10.100","141.240.10.101","140.224.10.101"],c:[0],e:"128+8+4 = 140; 240; 10; 64+32+4+1 = 101."},
+{id:"i13",t:"ip",q:"Adresa 140.240.10.101 este:",o:["De clasă B","Publică (nu privată)","De clasă A","Privată"],c:[0,1],e:"140 ∈ 128–191 → B. Nu e într-un domeniu privat."},
+{id:"i14",t:"ip",q:"Cum se identifică dimensiunea identificatorului de subrețea?",o:["Se identifică clasa adresei IPv4","Se identifică masca implicită a acelei clase","Pozițiile cu 1 în masca dată, care în masca implicită erau 0, sunt biții de subrețea","Se numără toți biții de 1 din masca dată"],c:[0,1,2],
+e:"Metoda din Lab 7. Totalul biților de 1 e prefixul, nu numărul de biți de subrețea."},
+{id:"i15",t:"ip",q:"Adresele de clasă D:",o:["Sunt adrese multicast","Încep cu biții 1110","Sunt în domeniul 224.0.0.0 – 239.255.255.255","Sunt folosite pentru echipamente unicast"],c:[0,1,2],e:"224.0.0.9 (RIPv2) e clasa D."},
+{id:"i16",t:"ip",q:"Adresele IPv4:",o:["Au 32 de biți","Se reprezintă în format zecimal cu punct","Se grupează în 4 octeți","Au 48 de biți"],c:[0,1,2],e:"48 biți = MAC."},
+{id:"i17",t:"ip",q:"Care adrese NU pot fi atribuite unui echipament (fără subrețele)?",o:["192.168.1.0","192.168.1.255","127.0.0.1 (ca adresă a unei interfețe către alte stații)","192.168.1.1"],c:[0,1,2],
+e:".0 = rețea, .255 = broadcast, 127.x = loopback. .1 e validă."},
+{id:"i18",t:"ip",q:"Rețeaua 193.226.17.152/29 (din tabela de rutare a modelului):",o:["Are masca 255.255.255.248","Are 6 adrese utilizabile pentru echipamente","Are adresa de broadcast 193.226.17.159","Include adresa 193.226.17.156"],c:[0,1,2,3],
+e:"/29 → 3 biți host → 6 echipamente. Domeniu 152–159."},
+{id:"i19",t:"ip",q:"Adresa 172.27.208.0 cu masca /24 (din tabela modelului) este:",o:["De clasă B","Privată","O subrețea a rețelei 172.27.0.0","De clasă C"],c:[0,1,2],e:"172 → B; 172.27 → privată; /24 față de /16 implicit → subrețea."},
+
+// ---------------- RUTARE ----------------
+{id:"r1",t:"route",q:"Protocolul de rutare RIP:",o:["Este un protocol de tip vector-distanță","Folosește ca metrică numărul de hopuri, maxim 15 (16 = inaccesibil)","Are distanța administrativă 120","RIPv2 e classless (trimite masca), RIPv1 e classful"],c:[0,1,2,3],e:"[120/x] în tabelă = AD 120 / metrică x hopuri."},
+{id:"r2",t:"route",q:"Actualizările RIP:",o:["RIPv2 trimite actualizări la adresa multicast 224.0.0.9","RIPv1 trimite actualizări prin broadcast (255.255.255.255)","RIPng e folosit pentru IPv6","RIP folosește portul TCP 520"],c:[0,1,2],e:"RIP folosește UDP 520 (RIPng UDP 521). Actualizări la 30 s."},
+{id:"r3",t:"route",q:"În intrarea  R 10.0.0.0/8 [120/2] via 193.226.17.156, 00:00:05, FastEthernet0/0 :",o:["120 este distanța administrativă","2 este metrica (numărul de hopuri)","120 este numărul de secunde de la ultima actualizare","00:00:05 este timpul de la ultima actualizare a rutei"],c:[0,1,3],e:"[AD/metrică]."},
+{id:"r4",t:"route",q:"Coduri dintr-o tabelă de rutare Cisco:",o:["C – rețea direct conectată","S – rută statică","R – rută învățată prin RIP","S* – rută statică implicită candidată"],c:[0,1,2,3],e:"0.0.0.0/0 = ruta implicită."},
+{id:"r5",t:"route",q:"Referitor la alegerea rutei:",o:["Routerul alege ruta cu cel mai lung prefix care se potrivește","Dacă nicio rută specifică nu se potrivește, se folosește ruta implicită 0.0.0.0/0","Dacă nu există potrivire și nici rută implicită, pachetul e aruncat","Routerul alege întotdeauna întâi ruta implicită"],c:[0,1,2],e:"Longest prefix match; ruta implicită e ultima opțiune."},
+{id:"r6",t:"route",q:"Se consideră tabela de rutare de mai jos. Care afirmații sunt adevărate?",
+code:`R    10.0.0.0/8 [120/1] via 192.168.1.2, 00:00:12, Serial0/0/0
+C    192.168.1.0/24 is directly connected, Serial0/0/0
+     172.16.0.0/22 is subnetted, 1 subnets
+C       172.16.4.0 is directly connected, FastEthernet0/0
+S*   0.0.0.0/0 [1/0] via 192.168.1.2`,
+o:["Pachetele către 10.1.2.3 sunt trimise la next hop 192.168.1.2","Ruta către 10.0.0.0/8 a fost actualizată acum 12 secunde","172.16.6.9 se află într-o rețea direct conectată la FastEthernet0/0","Pachetele către 8.8.8.8 sunt aruncate"],c:[0,1,2],
+e:"/22 → 172.16.4.0 – 172.16.7.255, deci .6.9 e acolo. 8.8.8.8 pleacă pe ruta implicită."},
+{id:"r7",t:"route",q:"Debug:  RIP: received v2 update from 10.1.1.2 on Serial0/0/0 — 192.168.5.0/24 via 0.0.0.0 in 1 hops — 172.16.0.0/16 via 0.0.0.0 in 3 hops. Care afirmații sunt adevărate?",o:["Routerul 10.1.1.2 e direct conectat la 192.168.5.0/24","Se folosește RIP versiunea 2","Actualizarea a sosit pe interfața Serial0/0/0","Se folosește RIPng"],c:[0,1,2],e:"„in 1 hops” = vecinul e direct conectat la acea rețea (ca la modelul 10 d)."},
+{id:"r8",t:"route",q:"Configurare: router rip / version 2 / network 192.168.6.0 / no auto-summary. Care afirmații sunt adevărate?",o:["RIP e activat pe interfețele care aparțin rețelei 192.168.6.0","Se folosește RIPv2","Sumarizarea automată la granițele claselor e dezactivată","RIPng e activat"],c:[0,1,2],e:"Comanda network activează RIP pe interfețele din acea rețea și o anunță."},
+{id:"r9",t:"route",q:"Rute statice:",o:["ip route 192.168.2.0 255.255.255.0 10.0.0.2 definește o rută statică cu next hop 10.0.0.2","ip route 0.0.0.0 0.0.0.0 <next-hop|interfață> definește o rută implicită","Distanța administrativă a unei rute statice este 1","Rutele statice se învață automat de la vecini"],c:[0,1,2],e:"Static = configurată manual. AD: conectat 0, static 1, RIP 120."},
+
+// ---------------- APLICAȚIE etc ----------------
+{id:"a1",t:"app",q:"Protocolul ARP:",o:["Obține adresa MAC când se cunoaște adresa IP","Cererea ARP (Request) e trimisă prin broadcast","Răspunsul ARP (Reply) e trimis unicast","Folosește Ethertype 0x0806"],c:[0,1,2,3],e:"ARP: IP → MAC."},
+{id:"a2",t:"app",q:"Protocolul DHCP:",o:["Alocă automat adresa IP, masca, default gateway-ul și serverele DNS","Folosește porturile UDP 67 (server) și 68 (client)","Are secvența de mesaje Discover, Offer, Request, Acknowledge","Obține adresa MAC când se cunoaște adresa IP"],c:[0,1,2],e:"DORA. d) e ARP."},
+{id:"a3",t:"app",q:"Protocolul ICMP:",o:["Este folosit de ping (Echo Request / Echo Reply)","Este un protocol de strat Rețea","Raportează erori precum Destination Unreachable, Time Exceeded","Este un protocol de Transport care folosește porturi"],c:[0,1,2],e:"ICMP nu are porturi."},
+{id:"a4",t:"app",q:"Porturi standard:",o:["HTTP – 80","DNS – 53","HTTPS – 443","DHCP – 53"],c:[0,1,2],e:"DHCP: 67/68. Mai ține minte: FTP 21, SSH 22, Telnet 23, SMTP 25."},
+{id:"a5",t:"app",q:"TCP și UDP:",o:["TCP e orientat pe conexiune și fiabil","UDP e fără conexiune","Interogările DNS folosesc în mod normal UDP","UDP folosește three-way handshake"],c:[0,1,2],e:"Handshake doar la TCP."},
+{id:"a6",t:"app",q:"Adresele IPv6:",o:["Au 128 de biți","Se scriu ca 8 grupuri de câte 16 biți, în hexazecimal","„::” poate înlocui grupuri consecutive de zerouri o singură dată într-o adresă","IPv6 folosește ARP pentru rezolvarea adreselor"],c:[0,1,2],e:"IPv6 folosește NDP (ICMPv6), nu ARP."},
+{id:"a7",t:"app",q:"Protocolul DNS:",o:["Traduce numele de domeniu în adrese IP","Folosește portul 53","Este un protocol de strat Transport","Este un protocol de strat Rețea"],c:[0,1],e:"DNS e Aplicație."},
+{id:"a8",t:"app",q:"Care protocoale de rutare sunt concepute pentru IPv6?",o:["RIPng","OSPFv3","RIPv2","RIPv1"],c:[0,1],e:"RIPv1/v2 doar IPv4."},
+{id:"a9",t:"app",q:"Protocolul ARP este folosit pentru:",o:["Obținerea adresei MAC dacă se cunoaște adresa IP","Obținerea adresei IP dacă se cunoaște adresa MAC","Alocarea automată a adreselor IP","Rezolvarea numelor de domeniu"],c:[0],e:"b) RARP, c) DHCP, d) DNS."}
+];
+
+// ---- curățare: scoatem materia care nu se mai face ----
+const DROP=new Set(["m6","m8","m9","m10","r1","r2","r3","r4","r5","r6","r7","r8","r9","a2","a6","a8"]);
+const RETOPIC={m7:"osi",a1:"eth",a3:"osi",a4:"osi",a5:"osi",a7:"osi",a9:"eth"};
+BANK=BANK.filter(q=>!DROP.has(q.id)).map(q=>RETOPIC[q.id]?{...q,t:RETOPIC[q.id]}:q);
+BANK.forEach(q=>{if(q.id==="a4"){q.o=["HTTP – 80","DNS – 53","HTTPS – 443","ARP – 67"];q.e="ARP nu folosește porturi (stă direct peste Ethernet). Porturile care apar în capturile din lab: HTTP 80, HTTPS 443, DNS 53."}});
+delete TOPICS.model;delete TOPICS.route;delete TOPICS.app;
+
+BANK.push(
+// ================= LAB 2 – OSI / TCP-IP =================
+{id:"o16",t:"osi",q:"Se analizează următorul pachet în Wireshark. Care afirmații sunt adevărate?",
+code:`Frame 13: 74 bytes on wire
+Ethernet II, Src: 00:1b:21:3a:4f:10, Dst: 00:0c:29:7e:12:af
+Internet Protocol Version 4, Src: 192.168.0.117, Dst: 93.184.216.34
+Transmission Control Protocol, Src Port: 51544, Dst Port: 80, Seq: 0, Len: 0`,
+o:["Protocolul de strat Transport este TCP","Portul destinație 80 indică o cerere către un server web (HTTP)","Adresa MAC 00:1b:21:3a:4f:10 aparține plăcii de rețea a stației 192.168.0.117","Pachetul conține un antet de strat Aplicație"],c:[0,1,2],
+e:"Len: 0 și Seq: 0 → e un segment de handshake (SYN), fără date de aplicație, deci d) e fals. MAC-ul sursă e al stației care a emis cadrul, adică 192.168.0.117 (aceeași rețea locală)."},
+{id:"o17",t:"osi",q:"Se analizează următorul pachet. Care afirmații sunt adevărate?",
+code:`Ethernet II, Src: 00:0c:29:7e:12:af, Dst: 00:1b:21:3a:4f:10
+Internet Protocol Version 4, Src: 192.168.0.1, Dst: 192.168.0.117
+User Datagram Protocol, Src Port: 53, Dst Port: 61022
+Domain Name System (response)`,
+o:["Este un răspuns DNS","DNS folosește aici UDP ca protocol de Transport","Portul sursă 53 arată că pachetul vine de la serverul DNS","DNS operează pe stratul Transport"],c:[0,1,2],
+e:"DNS e protocol de Aplicație, transportat de UDP. Portul 53 e al serverului, portul mare (61022) e al clientului."},
+{id:"o18",t:"osi",q:"Se analizează următorul pachet. Care afirmații sunt adevărate?",
+code:`Ethernet II, Src: 00:1b:21:3a:4f:10, Dst: 00:0c:29:7e:12:af
+Internet Protocol Version 4, Src: 192.168.0.117, Dst: 8.8.8.8
+Internet Control Message Protocol, Type: 8 (Echo (ping) request)`,
+o:["Pachetul nu are antet de strat Transport","Mesajul ICMP este încapsulat în IP","ICMP folosește porturi pentru identificarea aplicației","Mesajul e folosit pentru testarea conectivității"],c:[0,1,3],
+e:"Întrebarea 6 din Lab 2: ICMP (strat Rețea) e transportat direct în IP, fără TCP/UDP, fără porturi. Echo request = ping."},
+{id:"o19",t:"osi",q:"Comparând un pachet ARP cu un pachet care transportă o cerere HTTP, care afirmații sunt adevărate?",o:["Pachetul HTTP trece prin mai multe straturi decât pachetul ARP","Pachetul ARP nu are antet IP","Ambele au antet Ethernet","Ambele au antet TCP"],c:[0,1,2],
+e:"Întrebarea 2 din Lab 2 (pachetul 1 vs 13): ARP = Ethernet + ARP; HTTP = Ethernet + IP + TCP + HTTP."},
+{id:"o20",t:"osi",q:"Rolul straturilor din modelul OSI:",o:["Fizic – transmiterea biților pe mediul de comunicație","Legături de date – formarea cadrelor, adresare fizică (MAC), detecția erorilor","Rețea – adresare logică (IP) și rutare","Transport – comunicație cap-la-cap între aplicații, folosind porturi"],c:[0,1,2,3],
+e:"Toate corecte — întrebarea 1 din Lab 2."},
+{id:"o21",t:"osi",q:"Rolul straturilor superioare din modelul OSI:",o:["Prezentare – reprezentarea datelor, criptare, compresie","Sesiune – stabilirea, gestionarea și închiderea sesiunilor de comunicație","Aplicație – interfața dintre aplicații și serviciile de rețea","Rețea – conversia biților în semnale electrice"],c:[0,1,2],
+e:"Conversia în semnale e la stratul Fizic."},
+{id:"o22",t:"osi",q:"Ordinea corectă a încapsulării la emițător este:",o:["date → segment → pachet → cadru → biți","date → pachet → segment → cadru → biți","biți → cadru → pachet → segment → date","date → cadru → pachet → segment → biți"],c:[0],
+e:"De sus în jos: Transport (segment), Rețea (pachet), Legături de date (cadru), Fizic (biți). Varianta c) e ordinea la DEcapsulare (receptor)."},
+{id:"o23",t:"osi",q:"Stratul Acces la rețea din modelul TCP/IP corespunde în modelul OSI straturilor:",o:["Fizic","Legături de date","Rețea","Transport"],c:[0,1],
+e:"OSI 1+2 → Acces la rețea; OSI 3 → Internet; OSI 4 → Transport; OSI 5+6+7 → Aplicație."},
+{id:"o24",t:"osi",q:"Care dintre protocoalele din capturile de laborator operează pe stratul Aplicație?",o:["HTTP","DNS","TCP","IP"],c:[0,1],
+e:"TCP = Transport, IP = Rețea."},
+{id:"o25",t:"osi",q:"În ce antet se găsește fiecare informație?",o:["Portul – în antetul TCP/UDP","Adresa IP – în antetul IP","Adresa MAC – în antetul Ethernet","Portul – în antetul Ethernet"],c:[0,1,2],
+e:"Întrebările 7–9 din Lab 2: MAC → strat 2, IP → strat 3, port → strat 4."},
+{id:"o26",t:"osi",q:"Stratul Internet din modelul TCP/IP:",o:["Corespunde stratului Rețea din OSI","Conține protocolul IP","Conține protocolul ICMP","Conține protocolul UDP"],c:[0,1,2],
+e:"UDP e la Transport."},
+{id:"o27",t:"osi",q:"Câte straturi din modelul OSI sunt prezente într-un pachet DNS capturat (Ethernet / IPv4 / UDP / DNS)?",o:["Fizic, Legături de date, Rețea, Transport și Aplicație (Prezentarea și Sesiunea sunt incluse în Aplicație)","Doar Legături de date și Rețea","Toate 7, fiecare cu antet separat","Doar Aplicație"],c:[0],
+e:"Întrebarea 1c din Lab 2: Sesiunea și Prezentarea nu au antete separate în TCP/IP — sunt incluse în protocolul de aplicație."},
+{id:"o28",t:"osi",q:"Despre modelele OSI și TCP/IP:",o:["OSI e un model de referință cu 7 straturi","TCP/IP e modelul folosit efectiv în Internet","TCP/IP comasează straturile 5, 6, 7 din OSI într-un singur strat","TCP/IP nu are strat de Transport"],c:[0,1,2],
+e:"TCP/IP are Transport (TCP, UDP)."},
+
+// ================= LAB 3 =================
+{id:"d17",t:"dev",q:"Pe un switch Cisco se obține următorul rezultat. Care afirmații sunt adevărate?",
+code:`Switch#show mac-address-table
+          Mac Address Table
+-------------------------------------------
+Vlan    Mac Address       Type        Ports
+----    -----------       --------    -----
+   1    0001.4a2b.3c01    DYNAMIC     Fa0/1
+   1    0001.4a2b.3c02    DYNAMIC     Fa0/2
+   1    00d0.ba11.22aa    DYNAMIC     Fa0/23`,
+o:["Stația cu adresa MAC 0001.4a2b.3c02 este conectată pe portul Fa0/2","Un cadru destinat lui 00d0.ba11.22aa va fi trimis doar pe portul Fa0/23","Comanda afișează tabela de corespondență între porturi și adresele MAC","Adresele au fost configurate manual de administrator"],c:[0,1,2],
+e:"DYNAMIC = învățate automat de switch din cadrele primite, nu configurate manual (acelea ar fi STATIC)."},
+{id:"d18",t:"dev",q:"Pentru adresa MAC 0001.4a2b.3c01 (din tabela unui switch Cisco):",o:["OUI-ul este 00:01:4A","Este o adresă unicast","Este o adresă administrată local","Are 48 de biți"],c:[0,1,3],
+e:"Cisco scrie MAC-ul în 3 grupe de câte 4 cifre hexa. Primul octet 0x00 → I/G = 0 (unicast), U/L = 0 (universală)."},
+{id:"d19",t:"dev",q:"Comanda ipconfig /all afișează (extras):",
+code:`Physical Address. . . . . . . . . : 3C-52-82-1A-7F-04
+IPv4 Address. . . . . . . . . . . : 192.168.0.117
+Subnet Mask . . . . . . . . . . . : 255.255.255.0
+Default Gateway . . . . . . . . . : 192.168.0.1
+DNS Servers . . . . . . . . . . . : 192.168.0.1`,
+o:["Adresa MAC a plăcii de rețea este 3C-52-82-1A-7F-04","OUI-ul este 3C-52-82","Adresa IP este privată, de clasă C","Adresa MAC este administrată local"],c:[0,1,2],
+e:"0x3C = 0011 1100 → I/G = 0 (unicast), U/L = 0 (universală). 192.168.x → privată, clasa C."},
+{id:"d20",t:"dev",q:"Hub-ul vs switch-ul:",o:["Din exterior, switch-ul arată ca un hub","Hub-ul trimite semnalul primit pe un port către toate celelalte porturi","Switch-ul stabilește o legătură temporară între porturi, pe durata transmiterii cadrului","Hub-ul are pe panoul frontal LED-uri cu starea fiecărui port, de obicei 8, 16 sau 32 porturi RJ45"],c:[0,1,2,3],
+e:"Toate din Lab 3."},
+{id:"d21",t:"dev",q:"Configurarea plăcii de rețea în Windows:",o:["Opțiunile se accesează din Control Panel → Network and Internet → View network status and tasks → Change adapter settings","Butonul Properties necesită cont de tip Administrator","Pentru IPv4 se pot configura adresa IP, masca, default gateway și serverele DNS","Adresa MAC se configurează din fereastra de proprietăți IPv4"],c:[0,1,2],
+e:"Fereastra IPv4 are doar IP, mască, gateway, DNS."},
+{id:"d22",t:"dev",q:"Despre OUI (Organizationally Unique Identifier):",o:["Ocupă primii 24 de biți ai adresei MAC","Identifică în mod unic producătorul plăcii de rețea","Tabelele de corespondență OUI – producător sunt disponibile online","Ocupă ultimii 24 de biți ai adresei MAC"],c:[0,1,2],
+e:"Ex: wireshark.org/tools/oui-lookup.html."},
+{id:"d23",t:"dev",q:"Care dintre următoarele adrese MAC sunt administrate local?",o:["02:11:22:33:44:55","06:A0:B1:C2:D3:E4","00:1A:2B:3C:4D:5E","0A:00:27:00:00:0F"],c:[0,1,3],
+e:"Te uiți la al doilea caracter hexa din primul octet: 2 (0010), 6 (0110), A (1010) au bitul U/L = 1 → locale. 0 (0000) → universală."},
+{id:"d24",t:"dev",q:"Care dintre următoarele adrese MAC sunt de tip multicast/broadcast?",o:["01:00:5E:7F:FF:FA","33:33:00:00:00:01","FF:FF:FF:FF:FF:FF","00:50:56:C0:00:08"],c:[0,1,2],
+e:"Al doilea caracter hexa impar (1, 3, F) → I/G = 1. 0 → unicast."},
+{id:"d25",t:"dev",q:"Cisco Packet Tracer:",o:["Este licențiat de Cisco pentru instruire în cadrul Cisco Networking Academy","Permite rularea comenzilor de monitorizare a switch-ului fără echipamentul fizic","Este un instrument de captură a traficului real de pe placa de rețea","Simulează echipamente precum switch-uri, access point-uri, laptopuri"],c:[0,1,3],
+e:"Captura de trafic real = Wireshark."},
+{id:"d26",t:"dev",q:"Ce comandă folosești ca să afli pe ce port al switch-ului e conectată o stație cu adresa MAC cunoscută?",o:["show mac-address-table","show version","show flash","getmac"],c:[0],
+e:"Lab 3: pe baza adresei MAC se determină portul din tabela MAC."},
+{id:"d27",t:"dev",q:"Ce afișează comanda show flash pe un switch Cisco?",o:["Fișierele imagine ale sistemului de operare și configurația de pornire","Tabela de adrese MAC","Starea unei interfețe","Adresa MAC a calculatorului"],c:[0],e:"Lab 3."},
+{id:"d28",t:"dev",q:"Adresa MAC (conform Lab 3):",o:["Se reprezintă în format hexazecimal","Poate fi aflată cu getmac sau ipconfig /all","Depinde de rețeaua în care e conectat calculatorul","Bitul U/L = 0 înseamnă adresă alocată în mod unic de producător (UAA)"],c:[0,1,3],
+e:"De rețea depinde IP-ul, nu MAC-ul."},
+
+// ================= LAB 4 =================
+{id:"c13",t:"cab",q:"Un traseu de cablu are: legătura de 85 m, patch cord în dulap de 6 m, patch cord în zona de lucru de 3 m. Care afirmații sunt adevărate?",o:["Lungimea legăturii respectă limita maximă","Patch cord-ul din dulap respectă lungimea maximă","Totalul patch cord-urilor (9 m) respectă limita de 10 m","Patch cord-ul din zona de lucru depășește lungimea tipică"],c:[0,1,2],
+e:"Limite: legătură ≤ 90 m; dulap ≤ 6 m; zona de lucru tipic 3 m; total patch cord-uri 10 m."},
+{id:"c14",t:"cab",q:"Un traseu de cablu are: legătura de 95 m, patch cord în dulap de 7 m, patch cord în zona de lucru de 2 m. Care afirmații sunt adevărate?",o:["Legătura depășește lungimea maximă","Patch cord-ul din dulap depășește lungimea maximă","Totalul patch cord-urilor (9 m) respectă limita de 10 m","Toate lungimile respectă standardul"],c:[0,1,2],
+e:"95 > 90 și 7 > 6, deși totalul de 9 m e sub 10 m — capcana e că o limită respectată nu le salvează pe celelalte."},
+{id:"c15",t:"cab",q:"În absența inversării automate a pinilor, care legături necesită cablu crossover?",o:["PC – PC","Switch – switch","Hub – switch","PC – router"],c:[0,1,2,3],
+e:"Toate 4 sunt între echipamente de același tip (infrastructură–infrastructură sau terminal–terminal). Da, pot fi toate corecte."},
+{id:"c16",t:"cab",q:"Care legături folosesc cablu straight-through?",o:["PC – hub","Router – switch","Switch – bridge","Router – hub"],c:[0,1,3],
+e:"Switch și bridge sunt ambele infrastructură → crossover. Restul sunt terminal–infrastructură → straight-through."},
+{id:"c17",t:"cab",q:"Referitor la măsurători:",o:["Legătura de bază e măsurată de firma care a realizat cablarea","Canalul include și cablarea din zona de lucru","Legătura de bază include patch cord-urile din zona de lucru","Canalul e măsurat de obicei înainte de conectarea echipamentelor active"],c:[0,1,3],
+e:"Legătura de bază = doar TC ↔ TO. Cablarea din zona de lucru intră în canal."},
+{id:"c18",t:"cab",q:"Patch cord-ul comparat cu cablul pentru cablarea orizontală:",o:["Patch cord-ul este multifilar","Cablul orizontal are atenuare mai mică decât patch cord-ul","Patch cord-ul este rigid, unifilar","Patch cord-ul conectează echipamentele active la cablarea structurată"],c:[0,1,3],
+e:"Patch cord = flexibil, multifilar, atenuare mai mare."},
+{id:"c19",t:"cab",q:"Instrumente și echipamente:",o:["Clestele de sertizare – pentru montarea mufelor RJ45 pe patch cord-uri","Punch-down tool – pentru prize de telecomunicații și patch panel-uri","Fluke MicroScanner2 Pro – testor de cablu","OTDR – pentru testarea cablurilor UTP"],c:[0,1,2],
+e:"OTDR e pentru fibră optică."},
+{id:"c20",t:"cab",q:"Conectorizarea cablurilor UTP:",o:["Straight-through: aceeași schemă la ambele capete (ex. T568B – T568B)","Crossover: scheme diferite la cele două capete (T568A – T568B)","Straight-through: T568A la un capăt, T568B la celălalt","Crossover: aceeași schemă la ambele capete"],c:[0,1],
+e:"Același standard la ambele capete = straight; standarde diferite = crossover."},
+{id:"c21",t:"cab",q:"Mufe și conectori:",o:["RJ11 se folosește în telefonie","RJ45 se folosește pentru Ethernet","RJ11 se folosește pentru Ethernet","Clestele de sertizare poate fi folosit atât pentru RJ11, cât și pentru RJ45"],c:[0,1,3],e:"Lab 4, slide-ul cu clestele de sertizare."},
+{id:"c22",t:"cab",q:"Lungimea maximă a legăturii (basic link) testată este:",o:["90 m","100 m","10 m","6 m"],c:[0],e:"90 m — din lista celor 4 parametri testați."},
+{id:"c23",t:"cab",q:"Dacă ambele echipamente au inversare automată a pinilor de recepție și transmisie:",o:["Se poate folosi cablu straight-through și între echipamente de același tip","Cablul crossover nu mai este necesar","Legătura nu funcționează cu straight-through","Trebuie folosit obligatoriu crossover"],c:[0,1],e:"Lab 4: majoritatea echipamentelor moderne fac asta (auto MDI-X)."},
+
+// ================= LAB 5 / ETHERNET =================
+{id:"e18",t:"eth",q:"Antetul Ethernet al unui cadru capturat este:",
+code:`Ethernet II
+  Destination: ff:ff:ff:ff:ff:ff
+  Source: 00:1b:21:3a:4f:10
+  Type: ARP (0x0806)`,
+o:["Este un cadru broadcast","Transportă un mesaj ARP","Adresa sursă este multicast","Bitul I/G al adresei destinație este 1"],c:[0,1,3],
+e:"00:1b:... are I/G = 0 → sursa e unicast (o sursă nu poate fi multicast)."},
+{id:"e19",t:"eth",q:"Primii octeți ai unui cadru, așa cum apar în panoul inferior din Wireshark:  00 0c 29 7e 12 af 00 1b 21 3a 4f 10 08 00 45 00 ...  Care afirmații sunt adevărate?",o:["Adresa MAC destinație este 00:0c:29:7e:12:af","Adresa MAC sursă este 00:1b:21:3a:4f:10","Payload-ul este un pachet IPv4","Este un cadru IEEE 802.3"],c:[0,1,2],
+e:"6 octeți dest + 6 octeți sursă + 2 octeți Type = 0x0800 → IPv4 (și payload-ul începe cu 0x45 = IPv4, antet de 20 octeți). 0x0800 > 1500 → Ethernet II, nu 802.3."},
+{id:"e20",t:"eth",q:"Primii octeți ai unui cadru:  01 80 c2 00 00 00 00 1e 13 aa bb cc 00 26 42 42 03 ...  Care afirmații sunt adevărate?",o:["Câmpul 0x0026 = 38 este o lungime, deci cadrul e IEEE 802.3","Urmează un antet 802.2 LLC: DSAP 0x42, SSAP 0x42, Control 0x03","Adresa destinație este multicast","Este un cadru Ethernet II cu Ethertype 0x0026"],c:[0,1,2],
+e:"0x0026 = 38 ≤ 1500 → Length → 802.3 + LLC (3 octeți). 0x01 în primul octet → multicast. E exact cazul din Lab 5: 38 octeți de date → 8 octeți padding."},
+{id:"e21",t:"eth",q:"Primii octeți ai unui cadru:  33 33 00 00 00 fb 00 1b 21 3a 4f 10 86 dd 60 ...  Care afirmații sunt adevărate?",o:["Payload-ul este IPv6","Adresa destinație este multicast","Adresa destinație este unicast","Valoarea 0x86DD reprezintă lungimea cadrului 802.3"],c:[0,1],
+e:"0x86DD = Ethertype IPv6 (> 1500). 0x33 → bit I/G = 1 → multicast."},
+{id:"e22",t:"eth",q:"Câmpul Type/Length al unui cadru are valoarea 0x0040. Care afirmații sunt adevărate?",o:["Valoarea reprezintă o lungime (64 octeți)","Cadrul este IEEE 802.3","Valoarea este un Ethertype","După antet urmează un antet 802.2 LLC"],c:[0,1,3],e:"0x0040 = 64 ≤ 1500 → lungime → 802.3 → LLC."},
+{id:"e23",t:"eth",q:"Cu opțiunea Resolve MAC addresses activată, Wireshark afișează sursa ca IntelCor_3a:4f:10 (00:1b:21:3a:4f:10). Care afirmații sunt adevărate?",o:["Producătorul Intel a fost identificat din primii 3 octeți (OUI)","Producătorul a fost identificat din ultimii 3 octeți","Afișarea numelui producătorului depinde de opțiunea Resolve MAC addresses","OUI-ul este 00:1b:21"],c:[0,2,3],e:"Ultimii 3 octeți (3a:4f:10) sunt partea specifică plăcii și rămân afișați în hexa."},
+{id:"e24",t:"eth",q:"Filtrul de captură vs filtrul de afișare în Wireshark:",o:["Filtrul de captură se aplică înainte/în timpul capturii","Filtrul de afișare se aplică pe pachetele deja capturate","Filtrul de captură reduce dimensiunea fișierului de captură","Filtrul de afișare reduce dimensiunea fișierului de captură"],c:[0,1,2],
+e:"Filtrul de afișare doar ascunde; fișierul rămâne întreg."},
+{id:"e25",t:"eth",q:"Care câmpuri ale antetului Ethernet II sunt vizibile în Wireshark?",o:["Destination","Source","Type","Preamble"],c:[0,1,2],e:"Preambulul (și SFD, FCS) sunt filtrate de placa de rețea."},
+{id:"e26",t:"eth",q:"Stația B vrea să trimită date stației A din ACEEAȘI rețea locală, dar nu îi cunoaște adresa MAC. Care afirmații sunt adevărate?",o:["B trimite un ARP Request prin broadcast","ARP Request conține adresa IP a stației A ca Target IP","ARP Reply conține adresa MAC a stației A","ARP Request e trimis direct la router, care răspunde cu MAC-ul lui A"],c:[0,1,2],
+e:"În aceeași rețea nu e implicat routerul. Request broadcast, Reply unicast de la A."},
+{id:"e27",t:"eth",q:"Câmpul de date al unui cadru Ethernet are 20 de octeți. Care afirmații sunt adevărate?",o:["Cadrul nu îndeplinește dimensiunea minimă fără completare","Se adaugă 26 de octeți de Pad","Pad-ul este format din biți de 0, la sfârșitul cadrului","Cadrul este eliminat de placa de rețea a emițătorului"],c:[0,1,2],
+e:"Minimul câmpului de date e 46 octeți → 46 − 20 = 26 octeți Pad."},
+{id:"e28",t:"eth",q:"Adresa MAC destinație a unui cadru are primul octet 0x01. Care afirmații sunt adevărate?",o:["Filtrul eth.dst[0] & 1 afișează acest cadru","Cadrul este multicast","Cadrul este unicast","Bitul I/G este 1"],c:[0,1,3],e:"0x01 & 1 = 1 → multicast/broadcast."},
+{id:"e29",t:"eth",q:"Panoul din mijloc al Wireshark, la un pachet HTTP, afișează în ordine:",o:["Frame, Ethernet II, Internet Protocol, Transmission Control Protocol, Hypertext Transfer Protocol","Hypertext Transfer Protocol, TCP, IP, Ethernet II, Frame","Ethernet II, Frame, IP, TCP, HTTP","Frame, IP, Ethernet II, TCP, HTTP"],c:[0],e:"Wireshark afișează de jos în sus în stivă: întâi stratul cel mai de jos."},
+{id:"e30",t:"eth",q:"Opțiunea „Use promiscuous mode on all interfaces”:",o:["Permite capturarea întregului trafic, inclusiv cel care nu e destinat acestei plăci de rețea","Afișează producătorul plăcii pe baza OUI","Reduce dimensiunea fișierului de captură","Filtrează pachetele după protocol"],c:[0],e:"b) Resolve MAC addresses, c)/d) filtrele."},
+
+// ================= LAB 6 =================
+{id:"w15",t:"wifi",q:"Se analizează cadrul nr. 1 dintr-o captură 802.11 (extras). Care afirmații sunt adevărate?",
+code:`IEEE 802.11 Beacon frame
+  Receiver address: ff:ff:ff:ff:ff:ff
+  Destination address: ff:ff:ff:ff:ff:ff
+  Transmitter address: 00:14:6c:7e:40:80
+  Source address: 00:14:6c:7e:40:80
+  BSS Id: 00:14:6c:7e:40:80
+IEEE 802.11 wireless LAN management frame
+  Beacon Interval: 0.102400 [Seconds]
+  Tag: SSID parameter set: "Lab_TCOM"
+  Tag: Supported Rates 1(B), 2(B), 5.5(B), 11(B), 6, 9, 12, 18
+  Tag: DS Parameter set: Current Channel: 6`,
+o:["Numele rețelei este Lab_TCOM","Access Point-ul este configurat pe canalul 6","Cadrul Beacon este transmis aproximativ la fiecare 102,4 ms","Cadrul a fost emis de o stație, nu de Access Point"],c:[0,1,2],
+e:"Sursa = BSSID → emis de AP. Intervalul: 0,1024 s = 102,4 ms."},
+{id:"w16",t:"wifi",q:"Pentru același cadru Beacon (BSS Id = Source address = 00:14:6c:7e:40:80, Destination = ff:ff:ff:ff:ff:ff):",o:["Adresa MAC a Access Point-ului este 00:14:6c:7e:40:80","Este un cadru de management","Destinația este broadcast","Este un cadru de date"],c:[0,1,2],e:"Beacon = cadru de management."},
+{id:"w17",t:"wifi",q:"Se analizează cadrul nr. 431 (extras). Care afirmații sunt adevărate?",
+code:`IEEE 802.11 Data, Flags: .......T   (To DS)
+  Receiver address: 00:14:6c:7e:40:80
+  BSS Id: 00:14:6c:7e:40:80
+  Transmitter address: 00:13:02:d1:b6:4f
+  Source address: 00:13:02:d1:b6:4f
+  Destination address: 00:1a:a0:11:22:33
+Logical-Link Control
+Internet Protocol Version 4, Src: 192.168.1.101, Dst: 192.168.1.1
+User Datagram Protocol, Src Port: 52133, Dst Port: 53
+Domain Name System (query)`,
+o:["Source address ≠ BSS Id, deci cadrul nu a fost emis de Access Point","Protocolul de Transport este UDP","Protocolul de Aplicație este DNS","Protocolul de Legături de date este Ethernet II"],c:[0,1,2],
+e:"Pe stratul 2: IEEE 802.11 (+ LLC). Sursa e stația 00:13:02:d1:b6:4f; receptorul e AP-ul (BSSID)."},
+{id:"w18",t:"wifi",q:"Conform cerințelor din fișa de laborator, un student născut pe 15 iunie configurează AP-ul astfel:",o:["Adresa IP din LAN: 192.168.6.15","Canalul radio: 6","Numele rețelei: Nume_Prenume","Adresa IP din LAN: 192.168.15.6"],c:[0,1,2],
+e:"192.168.A.B, A = luna, B = ziua; canalul = luna; SSID = Nume_Prenume."},
+{id:"w19",t:"wifi",q:"Configurarea securității în Packet Tracer:",o:["Laptopurile trebuie configurate cu aceeași metodă de securitate și aceeași cheie/parolă ca AP-ul","După trecerea AP-ului pe WPA-PSK, laptopurile rămase pe WEP pierd conexiunea","Ping-ul între laptopuri funcționează și dacă niciunul nu e asociat la AP","WPA-PSK cu AES folosește o parolă (passphrase)"],c:[0,1,3],
+e:"Laptopurile comunică între ele prin AP; fără asociere nu există conectivitate."},
+{id:"w20",t:"wifi",q:"După dezactivarea transmisiei SSID în cadrele Beacon:",o:["Rețeaua nu mai apare în lista de rețele disponibile","Un laptop care are SSID-ul configurat manual se poate conecta","AP-ul nu mai transmite deloc cadre Beacon","Rețeaua devine imposibil de descoperit pentru un atacator"],c:[0,1],
+e:"Beacon-urile continuă (fără SSID). Atacatorul află SSID-ul din traficul stațiilor."},
+{id:"w21",t:"wifi",q:"Câmpul Supported Rates dintr-un Beacon conține: 1(B), 2(B), 5.5(B), 11(B), 6, 9, 12, 18. Care afirmații sunt adevărate?",o:["Ratele marcate cu (B) sunt rate de bază (obligatorii)","Ratele 1, 2, 5,5 și 11 sunt specifice 802.11b","AP-ul suportă doar 802.11n","Ratele sunt exprimate în Mbit/s"],c:[0,1,3],e:"6, 9, 12, 18… sunt rate OFDM (802.11g)."},
+{id:"w22",t:"wifi",q:"Ordonează opțiunile de securitate de la cea mai sigură la cea mai puțin sigură:",o:["WPA2, WPA, WEP, Disabled","WEP, WPA, WPA2, Disabled","WPA, WPA2, WEP, Disabled","Disabled, WEP, WPA, WPA2"],c:[0],e:"WPA2 (AES) > WPA > WEP > fără securitate."},
+{id:"w23",t:"wifi",q:"Care dintre următoarele metode NU oferă protecție reală împotriva unui atacator care capturează traficul?",o:["Dezactivarea transmisiei SSID","Filtrarea pe baza adresei MAC","WPA2 cu AES și o parolă puternică","Schimbarea canalului radio"],c:[0,1,3],
+e:"SSID-ul și MAC-urile acceptate se văd în trafic; canalul se găsește prin scanare. Doar criptarea WPA2 protejează."},
+{id:"w24",t:"wifi",q:"Unde se configurează următoarele pe un Access Point Linksys?",o:["Serverul DHCP pentru LAN – Setup → Basic Setup","SSID-ul și canalul – Wireless → Basic Wireless Settings","Criptarea WPA2 – Wireless → Wireless Security","SSID-ul – Setup → Basic Setup"],c:[0,1,2],e:"Meniurile din Lab 6."},
+{id:"w25",t:"wifi",q:"Analiza cadrelor 802.11:",o:["Se poate face cu Wireshark, pe capturi obținute de exemplu cu AirPcap","Cadrul Beacon e trimis periodic de AP","Stațiile folosesc Beacon-urile pentru a descoperi rețelele disponibile","Cadrul Beacon conține parola rețelei"],c:[0,1,2],e:"Parola nu apare niciodată în Beacon."},
+
+// ================= LAB 7 =================
+{id:"i20",t:"ip",q:"Pentru adresa 192.168.10.77 cu masca 255.255.255.224:",o:["Adresa subrețelei este 192.168.10.64","Adresa de broadcast direct este 192.168.10.95","Este a 2-a subrețea utilizabilă","Sunt utilizabile 8 subrețele"],c:[0,1,2],
+e:"Clasa C, 224 = 111 00000 → 3 biți subrețea, 5 biți host. 77 = 010 01101 → id 010 = 2 → a 2-a utilizabilă. Subrețele utilizabile: 2^3 − 2 = 6, nu 8."},
+{id:"i21",t:"ip",q:"Pentru adresa 10.45.130.9 cu masca 255.255.192.0:",o:["Se folosesc 10 biți pentru identificatorul de subrețea","Adresa subrețelei este 10.45.128.0","Adresa de broadcast direct este 10.45.191.255","Sunt utilizabile 1022 de subrețele"],c:[0,1,2,3],
+e:"Clasa A (/8), masca /18 → 10 biți de subrețea → 2^10 − 2 = 1022. 130 = 10 000010 → subrețea .128.0, broadcast .191.255. Toate patru."},
+{id:"i22",t:"ip",q:"Pentru adresa 200.15.3.130 cu masca 255.255.255.192:",o:["Adresa este publică","Sunt utilizabile 2 subrețele","Adresa subrețelei este 200.15.3.128","Subrețeaua nu se folosește, fiind ultima"],c:[0,1,2],
+e:"2 biți de subrețea; 130 = 10 000010 → id 10 = 2. Ultima subrețea e 11, nu 10 → se folosește."},
+{id:"i23",t:"ip",q:"Pentru adresa 172.20.0.5 cu masca 255.255.240.0:",o:["Identificatorul subrețelei este 0000","Conform convenției din laborator, această subrețea nu se utilizează","Adresa subrețelei coincide cu adresa rețelei 172.20.0.0","Adresa este publică"],c:[0,1,2],
+e:"Prima subrețea (id 0) se suprapune cu adresa rețelei → nu se folosește. 172.20 e privată."},
+{id:"i24",t:"ip",q:"Pentru adresa 192.168.1.250 cu masca 255.255.255.248:",o:["Identificatorul subrețelei este 11111","Adresa de broadcast a subrețelei este 192.168.1.255","Conform convenției din laborator, subrețeaua nu se utilizează","Sunt utilizabile 30 de subrețele"],c:[0,1,2,3],
+e:"5 biți de subrețea. 250 = 11111 010 → id 11111 = ultima → broadcast-ul ei coincide cu cel al rețelei → nu se folosește. 2^5 − 2 = 30. Toate patru."},
+{id:"i25",t:"ip",q:"Care măști oferă cel puțin 6 subrețele utilizabile pentru o rețea de clasă C?",o:["255.255.255.192","255.255.255.224","255.255.255.240","255.255.255.248"],c:[1,2,3],
+e:".192 → 2 biți → 2 subrețele. .224 → 6, .240 → 14, .248 → 30."},
+{id:"i26",t:"ip",q:"Pentru o rețea de clasă C împărțită în subrețele (convenția din laborator), care măști permit cel puțin 50 de echipamente într-o subrețea?",o:["255.255.255.192","255.255.255.224","255.255.255.128","255.255.255.240"],c:[0],
+e:".192 → 6 biți host → 62 ✓. .224 → 30 ✗. .128 → 1 bit de subrețea → 2^1 − 2 = 0 subrețele utilizabile ✗ (capcană). .240 → 14 ✗."},
+{id:"i27",t:"ip",q:"Clasa adreselor:",o:["191.255.1.1 – clasa B","223.1.1.1 – clasa C","224.0.0.5 – clasa C","126.1.1.1 – clasa A"],c:[0,1,3],e:"224 → clasa D."},
+{id:"i28",t:"ip",q:"Adresa 11000000.10101000.00000001.00001010 este:",o:["192.168.1.10","192.168.1.20","192.164.1.10","196.168.1.10"],c:[0],e:"128+64 = 192; 128+32+8 = 168; 1; 8+2 = 10."},
+{id:"i29",t:"ip",q:"Masca 11111111.11111111.11111111.11100000:",o:["Se scrie 255.255.255.224","Pentru o adresă de clasă C oferă 3 biți de subrețea","Lasă 5 biți pentru echipament → 30 de echipamente într-o subrețea","Are prefixul /28"],c:[0,1,2],e:"27 de biți de 1 → /27."},
+{id:"i30",t:"ip",q:"Adresa 172.16.255.255, fără subrețele (masca implicită):",o:["Este adresa de broadcast direct a rețelei 172.16.0.0","Este de clasă B","Este privată","Poate fi atribuită unui echipament"],c:[0,1,2],e:"Biți host toți 1 → broadcast."},
+{id:"i31",t:"ip",q:"Adrese de broadcast:",o:["192.168.1.255 este adresa de broadcast direct pentru 192.168.1.0/24","255.255.255.255 este adresa de broadcast local","Adresa cu toți biții de echipament în 1 este broadcast direct","255.255.255.255 este adresa de broadcast direct a oricărei rețele"],c:[0,1,2],e:"Lab 7: două tipuri – direct/direcționat și local (255.255.255.255)."},
+{id:"i32",t:"ip",q:"Pentru 172.27.214.165 / 255.255.240.0 (Problema 1):",o:["Există 16 subrețele în total","Sunt utilizabile 14 subrețele","Adresa subrețelei 0000 (172.27.0.0) coincide cu adresa rețelei","Broadcast-ul subrețelei 1111 (172.27.255.255) coincide cu broadcast-ul rețelei"],c:[0,1,2,3],e:"4 biți → 16 total, 14 utilizabile. Toate patru."},
+{id:"i33",t:"ip",q:"Câte echipamente pot fi adresate într-o subrețea pentru 172.27.214.165 / 255.255.240.0?",o:["4094","4096","14","254"],c:[0],e:"12 biți host → 2^12 − 2 = 4094."},
+{id:"i34",t:"ip",q:"Calculul adresei subrețelei și al broadcast-ului:",o:["Adresa subrețelei se obține prin ȘI logic bit cu bit între adresă și mască","Adresa subrețelei: biții de echipament puși în 0","Broadcast-ul direct: biții de echipament puși în 1","Adresa subrețelei se obține prin SAU logic între adresă și mască"],c:[0,1,2],e:"AND cu masca = biții de host anulați."},
+{id:"i35",t:"ip",q:"Care afirmații despre adresa 10.0.0.0 cu masca implicită sunt adevărate?",o:["Este adresa rețelei private de clasă A","Masca implicită este 255.0.0.0","Adresa de broadcast direct este 10.255.255.255","Poate fi atribuită unui echipament"],c:[0,1,2],e:"Toți biții host 0 → adresă de rețea."},
+{id:"i36",t:"ip",q:"Pentru 192.168.5.33 / 255.255.255.240:",o:["Identificatorul subrețelei este 0010","Adresa subrețelei este 192.168.5.32","Adresa de broadcast este 192.168.5.47","Fiecare subrețea are 16 echipamente utilizabile"],c:[0,1,2],e:"4 biți subrețea, 4 biți host → 14 echipamente. 33 = 0010 0001 → id 2, domeniu 32–47."}
+);
+
+const CARDS = [
+// OSI
+["osi","Straturile OSI (7 → 1)","Aplicație, Prezentare, Sesiune, Transport, Rețea, Legături de date, Fizic"],
+["osi","TCP/IP – 4 straturi și corespondența cu OSI","Aplicație (OSI 5-6-7) · Transport (OSI 4) · Internet (OSI 3) · Acces la rețea (OSI 1-2)"],
+["osi","PDU pe fiecare strat","Transport → segment · Rețea → pachet · Legături de date → cadru · Fizic → bit"],
+["osi","Ordinea încapsulării la emițător","date → segment → pachet → cadru → biți (fiecare strat adaugă antet; L2 adaugă și trailer FCS). Decapsularea: la receptor, invers."],
+["osi","Pe ce strat sunt: Ethernet, IP, ICMP, ARP, TCP, UDP, DNS, HTTP","Ethernet L2(+L1) · IP, ICMP L3 · ARP direct peste Ethernet (fără IP) · TCP, UDP L4 · DNS, HTTP L7"],
+["osi","Cine folosește MAC / IP / port?","MAC: Ethernet, 802.11, ARP · IP: IP, ICMP, ARP · Port: doar TCP și UDP"],
+["osi","„Frame” vs „Ethernet II” în Wireshark","Frame = informații de captură adăugate de Wireshark (timp, lungime). Ethernet II = antetul real L2: MAC dest, MAC sursă, Type."],
+["osi","De ce „lipsesc” straturi într-un pachet?","Nu orice pachet trece prin toate straturile: ARP n-are IP/TCP; ICMP n-are TCP/UDP; Sesiunea și Prezentarea sunt incluse în Aplicație."],
+["osi","TCP handshake","SYN → SYN/ACK → ACK. Doar TCP (UDP e fără conexiune)."],
+["osi","ICMP","Strat Rețea (Internet), încapsulat în IP, fără porturi. Folosit de ping (Echo Request/Reply) și pentru erori."],
+["osi","Porturi din capturi","HTTP 80 · HTTPS 443 · DNS 53 (UDP). Port mare (>1024) = clientul."],
+// Lab 3
+["dev","Hub","Strat FIZIC. Repetor multiport: repetă semnalul pe TOATE celelalte porturi. Topologie stea, LED-uri, 8/16/32 porturi RJ45."],
+["dev","Switch","Strat LEGĂTURI DE DATE. Trimite cadrul DOAR pe portul destinației (legătură temporară). Tabelă MAC ↔ port. Din exterior arată ca un hub."],
+["dev","Placa de rețea","Strat LEGĂTURI DE DATE, cel mai des întâlnit echipament de pe el. Are MAC-ul înscris pe ea."],
+["dev","Adresa MAC – format","48 biți = 6 octeți = 12 cifre hexa. Primii 24 biți = OUI (producătorul)."],
+["dev","Bitul I/G","Bitul 8 al primului octet (cel mai din dreapta). 0 = unicast, 1 = multicast/broadcast. Rapid: a 2-a cifră hexa impară → multicast."],
+["dev","Bitul U/L","Bitul 7 al primului octet. 0 = universal (UAA, de la producător), 1 = local (LAA, de la administrator). Rapid: a 2-a cifră hexa 2, 3, 6, 7, A, B, E, F → local."],
+["dev","Mut PC-ul în altă rețea","IP-ul se schimbă (depinde de rețea). MAC-ul rămâne (e pe placă)."],
+["dev","Comenzi pentru MAC-ul propriu","getmac, ipconfig /all (Windows), ip addr (Linux)"],
+["dev","ipconfig /all arată","MAC, IPv4, mască, default gateway, servere DNS"],
+["dev","show interface fastEthernet 0/23","Starea unei interfețe"],
+["dev","show version","Configurația hardware a switch-ului"],
+["dev","show flash","Fișierele imagine ale OS și configurația de pornire"],
+["dev","show mac-address-table","Tabela port ↔ MAC; din ea afli pe ce port e o stație"],
+["dev","Cisco Catalyst C2950","Switch de strat 2 cu management, 24 porturi 10/100 Mbit/s, rulează Cisco IOS. Se configurează prin interfața serială; ? afișează comenzile."],
+// Lab 4
+["cab","Patch cord – cifre","Zona de lucru: tipic 3 m · Dulap telecom: MAX 6 m · Total pe traseu: 10 m. Flexibil, multifilar, atenuare mai MARE decât cablul orizontal."],
+["cab","Legătura (basic link) – lungime maximă","90 m"],
+["cab","Straight-through vs crossover","Straight: aceeași conectorizare la ambele capete, echipamente de TIPURI DIFERITE. Crossover: conectorizări diferite, ACELAȘI tip."],
+["cab","Infrastructură vs terminale (cum spune lab-ul)","Infrastructură: switch, bridge, hub. Terminale: PC, ROUTER. Deci PC–router = crossover!"],
+["cab","Auto MDI-X","Echipamentele moderne inversează automat pinii Rx/Tx → crossover-ul nu mai e necesar."],
+["cab","Clește de sertizare / punch-down tool","Clește: mufe RJ11 (telefonie) și RJ45 (Ethernet). Punch-down: prize de telecomunicații și patch panel-uri."],
+["cab","Reguli la conectorizarea prizelor","Se respectă torsadarea, se cablează toate 4 perechile, max 13 mm netorsadat la conector."],
+["cab","Legătura de bază vs canal","Basic/contractor link: TC ↔ TO, măsurată de firma care a făcut cablarea. Channel/user link: legătura de bază + zona de lucru, măsurat înainte de conectarea echipamentelor active."],
+["cab","Cei 4 parametri testați","Harta firelor · Lungimea (max 90 m) · Atenuarea · NEXT, PS-NEXT"],
+["cab","OTDR","Fibră optică: atenuare, defecte pe fibră, conectorizare slabă. NU pentru UTP."],
+// Lab 5
+["eth","Antetul Ethernet II","MAC dest (6) + MAC sursă (6) + Type (2) = 14 octeți. MAC destinația e PRIMA."],
+["eth","De ce MAC destinație e înaintea sursei?","Ca echipamentul să decidă cât mai devreme dacă cadrul îi e destinat și altfel să oprească procesarea."],
+["eth","Ce nu vede Wireshark","Preambul, SFD (strat fizic) și FCS — filtrate de placa de rețea. Cadrul începe pentru Wireshark cu MAC-ul destinație."],
+["eth","Ethertype","0x0800 IPv4 · 0x0806 ARP · 0x86DD IPv6"],
+["eth","Dimensiune minimă cadru","64 octeți; date minim 46 → completare cu 0 (Pad) la sfârșit. Ex. lab: 38 octeți date → 8 octeți padding."],
+["eth","802.3 vs Ethernet II","802.3: câmpul Length (≤ 1500) în loc de Ethertype + antet 802.2 LLC care identifică protocolul. Ethernet II: Type ≥ 0x0600."],
+["eth","Dimensiuni antete 802.3 / LLC","802.3: 14 octeți · 802.2 LLC: 3 octeți (DSAP, SSAP, Control)"],
+["eth","Filtre Wireshark din lab","eth.dst[0] & 1 → multicast + broadcast · llc → cadre 802.3"],
+["eth","Opțiuni captură Wireshark","Resolve MAC addresses → producătorul din OUI · Promiscuous mode → tot traficul, și cel nedestinat plăcii · Capture filter → reduce fișierul"],
+["eth","Cele 3 panouri Wireshark","Sus: lista pachetelor colorate pe protocol · Mijloc: detalii pe straturi OSI · Jos: octeții brut (hexa/binar)"],
+["eth","ARP Request","Destinație Ethernet FF:FF:FF:FF:FF:FF · Target MAC 00:00:00:00:00:00 (necunoscut) · Protocol Type 0x0800 (rezolvă IPv4) · Ethernet Type 0x0806"],
+["eth","Pachet către altă rețea, prin router","IP destinație = stația finală (nu se schimbă). MAC destinație = routerul/gateway-ul (se schimbă la fiecare hop)."],
+["eth","Broadcast MAC","FF:FF:FF:FF:FF:FF (are și I/G = 1)"],
+// Lab 6
+["wifi","Cadrul Beacon","Cadru de MANAGEMENT, trimis periodic de AP la broadcast; anunță prezența și configurația AP; folosit la descoperire/conectare."],
+["wifi","Adresele în Beacon","Receiver = Destination = FF:FF:FF:FF:FF:FF · BSS Id = Source address (sursa e AP-ul)"],
+["wifi","Ce conține Beacon-ul","Interval Beacon (~0,1024 s) · SSID · canal · rate acceptate. NU parola."],
+["wifi","Cum dovedești că un cadru NU e de la AP?","Source address ≠ BSS Id"],
+["wifi","AirPcap","Drivere + hardware pentru captura 802.11 în Windows; analiza se face în Wireshark."],
+["wifi","Configurare AP","Server web inclus, accesat din browser la IP-ul AP-ului (user + parolă)."],
+["wifi","Setup → Basic Setup","Conexiunea la ISP (DHCP, IP static, PPPoE) + opțiuni LAN inclusiv server DHCP"],
+["wifi","Wireless → Basic Wireless Settings","Protocol (802.11 b/g/n), SSID, lățime canal 20/40 MHz, canal (Site Survey ca să eviți interferențe), transmisie SSID"],
+["wifi","Wireless → Wireless Security","Disabled, WEP, WPA, WPA2. Recomandat WPA/WPA2, NU WEP."],
+["wifi","Ascunderea SSID","Rețeaua dispare din listă; utilizatorul valid se conectează manual; atacatorul află SSID-ul din trafic."],
+["wifi","Filtrare MAC","Permite/blochează stații după MAC; atacatorul capturează un MAC acceptat și îl folosește."],
+["wifi","Politici de restricționare","După MAC sau IP → acces la servicii, aplicații, site-uri, protocoale, pe intervale de timp."],
+["wifi","Cerințele din Packet Tracer","IP AP = 192.168.LUNA.ZIUA · SSID = Nume_Prenume · canal = LUNA · WEP 40 biți = 10 cifre hexa ('cafeacafea')"],
+// Lab 7
+["ip","Clasele după primul octet","A 0–127 (bit 0) · B 128–191 (10) · C 192–223 (110) · D 224–239 (1110, multicast) · E 240+ (rezervat)"],
+["ip","Măști implicite","A 255.0.0.0 (/8) · B 255.255.0.0 (/16) · C 255.255.255.0 (/24)"],
+["ip","Adrese private","10.x.x.x · 172.16–172.31.x.x · 192.168.x.x. Restul = publice (clasa NU spune nimic de privat)."],
+["ip","Adrese private – proprietăți","Nu sunt vizibile din Internet; pot fi reutilizate."],
+["ip","Rețele A rezervate","0.x.x.x (0.0.0.0 = nespecificată) și 127.x.x.x (loopback) → clasa A are 2^7 − 2 rețele"],
+["ip","De ce −2 la echipamente","Biți host toți 0 = adresa rețelei · toți 1 = broadcast direct. Broadcast local = 255.255.255.255."],
+["ip","Nr. rețele / echipamente","A: 2^7−2 rețele, 2^24−2 echip. · B: 2^14 rețele, 2^16−2 · C: 2^21 rețele, 2^8−2 = 254"],
+["ip","Octet de mască → biți","128=1 · 192=2 · 224=3 · 240=4 · 248=5 · 252=6 · 254=7 · 255=8"],
+["ip","Biți de subrețea","prefixul măștii − prefixul implicit al clasei"],
+["ip","Subrețele utilizabile / echipamente","2^n − 2 subrețele (n biți subrețea, minim 2) · 2^h − 2 echipamente (h biți host)"],
+["ip","Metoda rapidă a blocului","Bloc = 256 − octetul interesant al măștii. Subrețea = cel mai mare multiplu de bloc ≤ octetul adresei (după → 0). Broadcast = subrețea + bloc − 1 (după → 255)."],
+["ip","„A câta subrețea utilizabilă”","id = octetul subrețelei ÷ bloc (clasele B/C). Id 0 și id maxim NU se folosesc. „a 14-a din total” = „a 13-a utilizabilă”."],
+["ip","Problema 1: 172.27.214.165 / 255.255.240.0","Clasa B, 4 biți subrețea, bloc 16 → subrețea 172.27.208.0, broadcast 172.27.223.255, id 1101 = 13 → a 13-a utilizabilă (din 14), 4094 echipamente."],
+["ip","Puteri ale lui 2","2 4 8 16 32 64 128 256 512 1024 2048 4096"]
+];
+
+// ===== Ce a picat colegilor: Wireshark (screenshot), switch + tabela MAC, octeți MAC =====
+TOPICS.ws = "Capturi Wireshark (screenshot) 🔥";
+// reordonăm ca Wireshark să apară lângă Ethernet
+(function(){const o={};["osi","dev","cab","eth","ws","wifi","ip","gen"].forEach(k=>o[k]=TOPICS[k]);Object.keys(TOPICS).forEach(k=>delete TOPICS[k]);Object.assign(TOPICS,o)})();
+
+const P_ARP={filter:"arp",sel:0,rows:[
+ ["64","12.345671","IntelCor_3a:4f:10","Broadcast","ARP","42","Who has 192.168.0.1? Tell 192.168.0.117"],
+ ["65","12.346902","Tp-LinkT_7e:12:af","IntelCor_3a:4f:10","ARP","60","192.168.0.1 is at 50:c7:bf:7e:12:af"]],
+ tree:["▸ Frame 64: 42 bytes on wire (336 bits), 42 bytes captured (336 bits)",
+ "▾ Ethernet II, Src: IntelCor_3a:4f:10 (00:1b:21:3a:4f:10), Dst: Broadcast (ff:ff:ff:ff:ff:ff)",
+ "      Destination: Broadcast (ff:ff:ff:ff:ff:ff)",
+ "      Source: IntelCor_3a:4f:10 (00:1b:21:3a:4f:10)",
+ "      Type: ARP (0x0806)",
+ "▾ Address Resolution Protocol (request)",
+ "      Hardware type: Ethernet (1)",
+ "      Protocol type: IPv4 (0x0800)",
+ "      Hardware size: 6",
+ "      Protocol size: 4",
+ "      Opcode: request (1)",
+ "      Sender MAC address: IntelCor_3a:4f:10 (00:1b:21:3a:4f:10)",
+ "      Sender IP address: 192.168.0.117",
+ "      Target MAC address: 00:00:00_00:00:00 (00:00:00:00:00:00)",
+ "      Target IP address: 192.168.0.1"],
+ hex:["0000   ff ff ff ff ff ff 00 1b 21 3a 4f 10 08 06 00 01",
+ "0010   08 00 06 04 00 01 00 1b 21 3a 4f 10 c0 a8 00 75",
+ "0020   00 00 00 00 00 00 c0 a8 00 01"]};
+
+const P_DNS={filter:"",sel:0,rows:[
+ ["13","2.104311","192.168.0.117","192.168.0.1","DNS","85","Standard query 0x1a2b A www.utcluj.ro"],
+ ["14","2.118540","192.168.0.1","192.168.0.117","DNS","101","Standard query response 0x1a2b A www.utcluj.ro A 193.226.6.226"]],
+ tree:["▸ Frame 13: 85 bytes on wire (680 bits), 85 bytes captured (680 bits)",
+ "▾ Ethernet II, Src: IntelCor_3a:4f:10 (00:1b:21:3a:4f:10), Dst: Tp-LinkT_7e:12:af (50:c7:bf:7e:12:af)",
+ "      Destination: Tp-LinkT_7e:12:af (50:c7:bf:7e:12:af)",
+ "      Source: IntelCor_3a:4f:10 (00:1b:21:3a:4f:10)",
+ "      Type: IPv4 (0x0800)",
+ "▾ Internet Protocol Version 4, Src: 192.168.0.117, Dst: 192.168.0.1",
+ "      0100 .... = Version: 4",
+ "      .... 0101 = Header Length: 20 bytes (5)",
+ "      Protocol: UDP (17)",
+ "▾ User Datagram Protocol, Src Port: 54321, Dst Port: 53",
+ "▸ Domain Name System (query)"],
+ hex:["0000   50 c7 bf 7e 12 af 00 1b 21 3a 4f 10 08 00 45 00",
+ "0010   00 47 3c 1d 00 00 80 11 00 00 c0 a8 00 75 c0 a8",
+ "0020   00 01 d4 31 00 35 00 33 7a 9c 1a 2b 01 00 00 01"]};
+
+const P_TCP={filter:"ip.addr == 93.184.216.34",sel:0,rows:[
+ ["21","3.512004","192.168.0.117","93.184.216.34","TCP","66","51544 → 80 [SYN] Seq=0 Win=64240 Len=0 MSS=1460"],
+ ["22","3.540118","93.184.216.34","192.168.0.117","TCP","66","80 → 51544 [SYN, ACK] Seq=0 Ack=1 Win=65535 Len=0"],
+ ["23","3.540207","192.168.0.117","93.184.216.34","TCP","54","51544 → 80 [ACK] Seq=1 Ack=1 Win=262656 Len=0"],
+ ["24","3.541003","192.168.0.117","93.184.216.34","HTTP","389","GET / HTTP/1.1"],
+ ["25","3.600871","93.184.216.34","192.168.0.117","HTTP","1514","HTTP/1.1 200 OK  (text/html)"]],
+ tree:["▸ Frame 21: 66 bytes on wire (528 bits), 66 bytes captured (528 bits)",
+ "▸ Ethernet II, Src: IntelCor_3a:4f:10 (00:1b:21:3a:4f:10), Dst: Tp-LinkT_7e:12:af (50:c7:bf:7e:12:af)",
+ "▸ Internet Protocol Version 4, Src: 192.168.0.117, Dst: 93.184.216.34",
+ "▾ Transmission Control Protocol, Src Port: 51544, Dst Port: 80, Seq: 0, Len: 0",
+ "      Source Port: 51544",
+ "      Destination Port: 80",
+ "      Flags: 0x002 (SYN)"],hex:[]};
+
+const P_STP={filter:"llc",sel:0,rows:[
+ ["7","1.000412","Cisco_aa:bb:cc","Spanning-tree-(for-bridges)_00","STP","60","Conf. Root = 32768/1/00:1e:13:aa:bb:cc  Cost = 0  Port = 0x8001"]],
+ tree:["▸ Frame 7: 60 bytes on wire (480 bits), 60 bytes captured (480 bits)",
+ "▾ IEEE 802.3 Ethernet",
+ "      Destination: Spanning-tree-(for-bridges)_00 (01:80:c2:00:00:00)",
+ "      Source: Cisco_aa:bb:cc (00:1e:13:aa:bb:cc)",
+ "      Length: 38",
+ "      Padding: 0000000000000000",
+ "▾ Logical-Link Control",
+ "      DSAP: Spanning Tree BPDU (0x42)",
+ "      SSAP: Spanning Tree BPDU (0x42)",
+ "      Control field: U, func=UI (0x03)",
+ "▸ Spanning Tree Protocol"],
+ hex:["0000   01 80 c2 00 00 00 00 1e 13 aa bb cc 00 26 42 42",
+ "0010   03 00 00 00 00 00 80 01 00 1e 13 aa bb cc 00 00"]};
+
+const P_ICMP={filter:"icmp",sel:0,rows:[
+ ["30","4.001233","192.168.0.117","8.8.8.8","ICMP","74","Echo (ping) request  id=0x0001, seq=12/3072, ttl=128 (reply in 31)"],
+ ["31","4.020871","8.8.8.8","192.168.0.117","ICMP","74","Echo (ping) reply    id=0x0001, seq=12/3072, ttl=117 (request in 30)"]],
+ tree:["▸ Frame 30: 74 bytes on wire (592 bits), 74 bytes captured (592 bits)",
+ "▸ Ethernet II, Src: IntelCor_3a:4f:10 (00:1b:21:3a:4f:10), Dst: Tp-LinkT_7e:12:af (50:c7:bf:7e:12:af)",
+ "▾ Internet Protocol Version 4, Src: 192.168.0.117, Dst: 8.8.8.8",
+ "      Protocol: ICMP (1)",
+ "▾ Internet Control Message Protocol",
+ "      Type: 8 (Echo (ping) request)",
+ "      Code: 0"],hex:[]};
+
+const MAC_TBL=`Switch#show mac-address-table
+          Mac Address Table
+-------------------------------------------
+Vlan    Mac Address       Type        Ports
+----    -----------       --------    -----
+   1    00e0.f7a1.0001    DYNAMIC     Fa0/1
+   1    00e0.f7a1.0002    DYNAMIC     Fa0/2
+   1    0019.e8c4.7a10    DYNAMIC     Fa0/24
+   1    0019.e8c4.7a11    DYNAMIC     Fa0/24`;
+
+BANK.push(
+// ---- Wireshark screenshot ----
+{id:"ws1",t:"ws",ws:P_ARP,q:"Pe baza capturii de mai sus (pachetul 64 selectat), care afirmații sunt adevărate?",o:["„Hardware size: 6” arată că adresa MAC are 6 octeți","„Protocol size: 4” arată că adresa IPv4 are 4 octeți","Target MAC 00:00:00:00:00:00 înseamnă că adresa MAC căutată nu e încă cunoscută","Opcode 1 indică un ARP Reply"],c:[0,1,2],e:"Opcode 1 = request, 2 = reply. MAC = 6 octeți (48 biți), IPv4 = 4 octeți (32 biți)."},
+{id:"ws2",t:"ws",ws:P_ARP,q:"Referitor la antetul Ethernet al pachetului 64:",o:["Type 0x0806 indică faptul că payload-ul e ARP","Cadrul este trimis broadcast","Numele „IntelCor” e afișat pe baza OUI (opțiunea Resolve MAC addresses)","Cadrul conține un antet IP"],c:[0,1,2],e:"ARP stă direct peste Ethernet, fără IP. „IntelCor_” = producătorul decodat din primii 3 octeți (00:1b:21)."},
+{id:"ws3",t:"ws",ws:P_ARP,q:"În panoul inferior (hexa), ce reprezintă primii 6 octeți „ff ff ff ff ff ff”?",o:["Adresa MAC destinație","Adresa MAC sursă","Preambulul","Câmpul Ethertype"],c:[0],e:"Wireshark nu vede preambulul; cadrul începe cu MAC destinație (6 octeți), apoi MAC sursă (6), apoi Type (2: „08 06”)."},
+{id:"ws4",t:"ws",ws:P_ARP,q:"În aceeași captură, coloanele Source și Destination ale pachetelor ARP afișează:",o:["Adrese MAC (cu numele producătorului)","Adrese IP","Porturi","Numele de domeniu"],c:[0],e:"ARP nu are antet IP, deci cea mai înaltă adresă disponibilă e MAC-ul. La pachetele cu IP, coloanele afișează adresele IP."},
+{id:"ws5",t:"ws",ws:P_ARP,q:"Pachetul 65 (răspunsul) arată: „192.168.0.1 is at 50:c7:bf:7e:12:af”. Care afirmații sunt adevărate?",o:["Este ARP Reply","Stația 192.168.0.117 află MAC-ul gateway-ului 192.168.0.1","Răspunsul este trimis unicast către IntelCor_3a:4f:10","Răspunsul este trimis broadcast"],c:[0,1,2],e:"Request = broadcast, Reply = unicast direct către cel care a întrebat."},
+{id:"ws6",t:"ws",ws:P_DNS,q:"Pe baza capturii (pachetul 13 selectat), care afirmații sunt adevărate?",o:["Protocolul de Transport este UDP","Portul destinație 53 arată că mesajul merge la un server DNS","Câmpul Protocol: UDP (17) din antetul IP indică protocolul încapsulat","DNS operează pe stratul Transport"],c:[0,1,2],e:"DNS e Aplicație. IP îți spune prin câmpul Protocol ce urmează (17 = UDP, 6 = TCP, 1 = ICMP), la fel cum Ethernet îți spune prin Type (0x0800 = IPv4)."},
+{id:"ws7",t:"ws",ws:P_DNS,q:"Ce straturi sunt prezente în pachetul 13?",o:["Legături de date – Ethernet II","Rețea – IPv4","Transport – UDP","Transport – TCP"],c:[0,1,2],e:"Plus Aplicația (DNS). Nu are TCP."},
+{id:"ws8",t:"ws",ws:P_DNS,q:"În pachetul 13, coloanele Source și Destination afișează 192.168.0.117 și 192.168.0.1. Care afirmații sunt adevărate?",o:["Sunt adresele IP din antetul IP","Adresa MAC destinație a cadrului este 50:c7:bf:7e:12:af","Ambele adrese sunt private","Adresa MAC sursă este 50:c7:bf:7e:12:af"],c:[0,1,2],e:"Destination MAC = Tp-LinkT_7e:12:af (routerul/serverul DNS local). Sursa MAC e 00:1b:21:3a:4f:10."},
+{id:"ws9",t:"ws",ws:P_DNS,q:"În panoul hexa, octeții „08 00” de la pozițiile 12–13 și „45” care urmează reprezintă:",o:["08 00 = Ethertype IPv4","45 = începutul antetului IP: versiunea 4, antet de 5×4 = 20 octeți","08 00 = lungimea cadrului 802.3","45 = portul sursă"],c:[0,1],e:"0x0800 > 1500 → Ethertype (IPv4). Primul octet IP: 4 = versiune, 5 = Header Length în cuvinte de 4 octeți."},
+{id:"ws10",t:"ws",ws:P_TCP,q:"Pe baza listei de pachete, care afirmații sunt adevărate?",o:["Pachetele 21–23 reprezintă TCP three-way handshake","Pachetul 24 este cererea HTTP către server","Serverul web ascultă pe portul 80","Handshake-ul se face prin UDP"],c:[0,1,2],e:"SYN → SYN,ACK → ACK (21, 22, 23), apoi GET (24) și răspunsul 200 OK (25)."},
+{id:"ws11",t:"ws",ws:P_TCP,q:"Despre pachetul 25 (HTTP/1.1 200 OK, 1514 octeți):",o:["Este răspunsul serverului 93.184.216.34","1514 = 14 octeți antet Ethernet + 1500 octeți date (maximul)","Este trimis către portul 51544 al clientului","Este trimis de la portul 51544"],c:[0,1,2],e:"Serverul trimite de la portul 80 către portul clientului 51544. 1500 = câmpul de date maxim Ethernet."},
+{id:"ws12",t:"ws",ws:P_TCP,q:"Coloanele panoului superior din Wireshark:",o:["No. – numărul de ordine al pachetului în captură","Time – timpul (în secunde) de la începutul capturii","Length – lungimea cadrului în octeți","Protocol – protocolul de cel mai înalt nivel decodat"],c:[0,1,2,3],e:"Toate patru. De aceea pachetul 24 apare ca HTTP, nu ca TCP, deși conține și TCP."},
+{id:"ws13",t:"ws",ws:P_TCP,q:"Filtrul „ip.addr == 93.184.216.34” scris în bara de sus:",o:["Este un filtru de afișare","Arată doar pachetele care au această adresă IP ca sursă sau destinație","Șterge celelalte pachete din fișierul de captură","Este un filtru de captură care trebuie setat înainte de Start"],c:[0,1],e:"Bara de deasupra listei = filtru de AFIȘARE; ascunde, nu șterge."},
+{id:"ws14",t:"ws",ws:P_STP,q:"Pe baza capturii (pachetul 7 selectat), care afirmații sunt adevărate?",o:["Este un cadru IEEE 802.3, pentru că are câmpul Length (38)","Au fost adăugați 8 octeți de Padding pentru a atinge dimensiunea minimă","Protocolul de strat superior e identificat prin DSAP/SSAP din antetul LLC","Câmpul Length = 38 este un Ethertype"],c:[0,1,2],e:"38 ≤ 1500 → lungime → 802.3. 38 + 8 = 46 (minimul de date). Filtrul folosit e „llc”, exact ca în laborator."},
+{id:"ws15",t:"ws",ws:P_STP,q:"Tot pentru pachetul 7:",o:["Adresa destinație 01:80:c2:00:00:00 este multicast","Cadrul are 60 de octeți în Wireshark (+4 octeți FCS = 64, minimul)","Antetul LLC are 3 octeți (DSAP, SSAP, Control)","Adresa sursă apare înaintea adresei destinație"],c:[0,1,2],e:"0x01 → I/G = 1 → multicast. FCS-ul e filtrat de placă, de aceea Wireshark arată 60. Destinația e întotdeauna prima."},
+{id:"ws16",t:"ws",ws:P_ICMP,q:"Pe baza capturii, care afirmații sunt adevărate?",o:["Pachetele 30 și 31 formează perechea cerere/răspuns a unui ping","Mesajul ICMP e încapsulat direct în IP (Protocol: ICMP (1))","ICMP nu folosește porturi","ICMP operează pe stratul Transport"],c:[0,1,2],e:"ICMP = strat Rețea (Internet), fără porturi."},
+{id:"ws17",t:"ws",ws:P_DNS,q:"Despre cele trei panouri din captura de mai sus:",o:["Selectarea unui câmp în panoul din mijloc evidențiază octeții lui în panoul de jos","Panoul de jos afișează octeții în hexazecimal, cu offset-ul (0000, 0010…) în stânga","Panoul din mijloc afișează straturile pachetului ca arbore, de jos în sus în stivă (Frame, Ethernet, IP…)","Panoul de jos conține și preambulul cadrului"],c:[0,1,2],e:"Preambulul e filtrat de placa de rețea."},
+// ---- Switch + tabela MAC ----
+{id:"sw1",t:"dev",q:"Cum funcționează un switch cu tabela de adrese MAC?",o:["Învață adresele din adresa MAC SURSĂ a cadrelor primite, asociind-o cu portul de intrare","Dacă destinația nu e în tabelă, trimite cadrul pe toate porturile, mai puțin cel de intrare","Un cadru broadcast e trimis pe toate porturile, mai puțin cel de intrare","Învață adresele din adresa MAC DESTINAȚIE a cadrelor"],c:[0,1,2],e:"Învață din sursă, filtrează/trimite după destinație. Necunoscut sau broadcast → inundare (flooding)."},
+{id:"sw2",t:"dev",code:MAC_TBL,q:"PC3, cu MAC 00e0.f7a1.0003, e conectat pe Fa0/3 și trimite un cadru către 00e0.f7a1.0001. Care afirmații sunt adevărate?",o:["Switch-ul adaugă în tabelă 00e0.f7a1.0003 → Fa0/3","Cadrul e trimis doar pe portul Fa0/1","Cadrul e trimis pe toate porturile","Stația de pe Fa0/2 primește cadrul"],c:[0,1],e:"Sursa necunoscută se învață; destinația e cunoscută → un singur port."},
+{id:"sw3",t:"dev",code:MAC_TBL,q:"Stația de pe Fa0/1 trimite un cadru către 00e0.f7a1.0009, care nu apare în tabelă. Ce se întâmplă?",o:["Cadrul e trimis pe toate porturile, mai puțin Fa0/1","Cadrul e trimis doar pe Fa0/1","Cadrul este aruncat","Intrarea 00e0.f7a1.0001 → Fa0/1 rămâne/se reîmprospătează în tabelă"],c:[0,3],e:"Destinație necunoscută → flooding. Sursa (0001) e deja asociată cu Fa0/1."},
+{id:"sw4",t:"dev",code:MAC_TBL,q:"În tabela de mai sus, pe portul Fa0/24 apar două adrese MAC. Care afirmații sunt adevărate?",o:["Pe Fa0/24 e probabil conectat un alt switch sau un hub, cu mai multe stații în spate","Pe același port pot fi învățate mai multe adrese MAC","Este o situație imposibilă, un port are o singură adresă MAC","Un cadru către 0019.e8c4.7a11 va fi trimis pe Fa0/24"],c:[0,1,3],e:"Tabela e port ↔ MAC, iar un port poate avea mai multe MAC-uri în spate."},
+{id:"sw5",t:"dev",q:"Un PC cu Wireshark e conectat pe portul Fa0/5 al unui switch (fără port mirroring), iar tabela MAC e completă. Ce va captura?",o:["Cadrele broadcast","Cadrele destinate lui","Cadrele unicast schimbate între stațiile de pe Fa0/1 și Fa0/2","Dacă în locul switch-ului ar fi un hub, ar vedea tot traficul"],c:[0,1,3],e:"Switch-ul trimite unicast-ul doar pe portul destinației; hub-ul repetă totul pe toate porturile."},
+{id:"sw6",t:"dev",q:"În tabela afișată de show mac-address-table:",o:["DYNAMIC = adresă învățată automat din trafic","STATIC = adresă configurată manual","Coloana Ports arată portul pe care e conectată stația cu acea adresă","Coloana Mac Address conține adresele IP ale stațiilor"],c:[0,1,2],e:"Tabela MAC nu conține adrese IP."},
+{id:"sw7",t:"dev",q:"Hub vs switch când o stație trimite un cadru unicast:",o:["Hub-ul îl repetă pe toate celelalte porturi","Switch-ul îl trimite doar pe portul destinației (dacă o cunoaște)","Hub-ul folosește o tabelă de adrese MAC","Switch-ul operează pe stratul Legături de date, hub-ul pe stratul Fizic"],c:[0,1,3],e:"Hub-ul nu are tabelă: e doar repetor."},
+// ---- octeți MAC ----
+{id:"mac1",t:"dev",q:"Adresa MAC are:",o:["6 octeți","48 de biți","12 cifre hexazecimale","4 octeți"],c:[0,1,2],e:"4 octeți = IPv4."},
+{id:"mac2",t:"dev",q:"OUI-ul dintr-o adresă MAC ocupă:",o:["Primii 3 octeți","24 de biți","Ultimii 3 octeți","Toți cei 6 octeți"],c:[0,1],e:"Primii 3 octeți = producătorul; ultimii 3 = numărul plăcii, dat de producător."},
+{id:"mac3",t:"dev",q:"Câți octeți ocupă împreună adresa MAC destinație și adresa MAC sursă în antetul Ethernet?",o:["12","6","14","8"],c:[0],e:"6 + 6 = 12; cu Type-ul (2) → antet de 14 octeți."},
+{id:"mac4",t:"dev",q:"Comparație adresă IPv4 – adresă MAC:",o:["IPv4: 4 octeți (32 biți)","MAC: 6 octeți (48 biți)","IPv4 se scrie zecimal cu punct, MAC în hexazecimal","MAC: 4 octeți (32 biți)"],c:[0,1,2],e:"Clasic de grilă."}
+);
+
+CARDS.push(
+["dev","Câți octeți are adresa MAC?","6 octeți = 48 biți = 12 cifre hexa (IPv4 = 4 octeți = 32 biți)"],
+["dev","Cum învață switch-ul tabela MAC?","Din adresa MAC SURSĂ a cadrelor primite → o asociază cu portul de intrare (DYNAMIC)."],
+["dev","Destinație necunoscută / broadcast la switch","Cadrul e trimis pe toate porturile, mai puțin cel pe care a intrat (flooding)."],
+["dev","Mai multe MAC-uri pe același port","Normal: în spatele portului e un alt switch sau un hub."],
+["ws","Coloanele din lista Wireshark","No. = nr. de ordine · Time = secunde de la start · Source/Destination · Protocol = cel mai înalt protocol decodat · Length = octeții cadrului · Info"],
+["ws","Ce afișează Source/Destination?","Adresele celui mai înalt strat cu adrese: IP dacă pachetul are IP, MAC la ARP/STP."],
+["ws","Câmpul Protocol din antetul IP","1 = ICMP · 6 = TCP · 17 = UDP"],
+["ws","ARP în Wireshark","Hardware size 6 (MAC), Protocol size 4 (IPv4), Opcode 1 = request / 2 = reply, Target MAC 00:… = necunoscut"],
+["ws","Hexa: „08 00 45”","08 00 = Ethertype IPv4; 45 = IP versiunea 4, antet 5×4 = 20 octeți"],
+["ws","Bara de filtru de deasupra listei","Filtru de AFIȘARE (ex. arp, icmp, llc, ip.addr == x). Ascunde, nu șterge."],
+["ws","Cadru de 60 octeți în Wireshark","+ 4 octeți FCS (filtrați de placă) = 64, minimul Ethernet"],
+["ws","1514 octeți în Wireshark","14 antet Ethernet + 1500 date (maximul)"]
+);
+
+</script>
+<script>
+const $=s=>document.querySelector(s);
+const L='abcd';
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const ri=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+const LABS=Object.keys(TOPICS).filter(t=>t!=='gen');
+let st=null, timerId=null;
+
+// ---------------- subnet generator ----------------
+const ip2s=n=>[n>>>24,(n>>>16)&255,(n>>>8)&255,n&255].join('.');
+function genSubnet(){
+  for(;;){
+    const cls=['A','B','C','B','C'][ri(0,4)];let o1,def;
+    if(cls==='A'){o1=[10,ri(1,126)][ri(0,1)];def=8}
+    if(cls==='B'){o1=[172,ri(128,191)][ri(0,1)];def=16}
+    if(cls==='C'){o1=[192,ri(192,223)][ri(0,1)];def=24}
+    let o2=ri(0,255);if(o1===172&&Math.random()<.6)o2=ri(16,31);if(o1===192)o2=168;
+    const addr=((o1<<24)|(o2<<16)|(ri(0,255)<<8)|ri(1,254))>>>0;
+    const maxSub=32-def-2;const sb=ri(2,Math.min(maxSub,cls==='A'?8:maxSub));const pre=def+sb;const hb=32-pre;if(hb<2)continue;
+    const mask=(0xFFFFFFFF<<hb)>>>0,net=(addr&mask)>>>0,bc=(net|(~mask>>>0))>>>0,sid=(addr>>>hb)&((1<<sb)-1);
+    if(sid===0||sid===(1<<sb)-1||addr===net||addr===bc)continue;
+    const priv=(o1===10)||(o1===172&&o2>=16&&o2<=31)||(o1===192&&o2===168);
+    const cand=[],T=(t,v)=>cand.push([t,v]);
+    Math.random()<.5?T(`Adresa subrețelei este ${ip2s(net)}`,1):T(`Adresa subrețelei este ${ip2s((net+(1<<hb))>>>0)}`,0);
+    Math.random()<.5?T(`Adresa de broadcast direct a subrețelei este ${ip2s(bc)}`,1):T(`Adresa de broadcast direct a subrețelei este ${ip2s((bc-1)>>>0)}`,0);
+    Math.random()<.5?T(`Face parte din subrețeaua utilizabilă nr. ${sid} (identificator ${sid.toString(2).padStart(sb,'0')})`,1):T(`Face parte din subrețeaua utilizabilă nr. ${sid+1}`,0);
+    const r=Math.random();
+    if(r<.33)T(`Se folosesc ${sb} biți pentru identificatorul de subrețea, deci ${2**sb-2} subrețele sunt utilizabile`,1);
+    else if(r<.66)T(`Fiecare subrețea poate adresa ${2**hb-2} echipamente`,1);else T(`Sunt utilizabile ${2**sb} subrețele`,0);
+    Math.random()<.5?T(`Adresa este ${priv?'privată':'publică'}`,1):T(`Adresa este ${priv?'publică':'privată'}`,0);
+    Math.random()<.5?T(`Adresa este de clasă ${cls}`,1):T(`Adresa este de clasă ${cls==='B'?'C':'B'}`,0);
+    const pick=shuffle(cand).slice(0,4);
+    return {id:'gen',t:'gen',gen:1,q:`Se consideră adresa IPv4 ${ip2s(addr)} cu masca ${ip2s(mask)}. Care afirmații sunt adevărate?`,
+      o:pick.map(p=>p[0]),c:pick.map((p,i)=>p[1]?i:-1).filter(i=>i>=0),
+      e:`Clasa ${cls} → masca implicită /${def}; masca dată are /${pre} → ${sb} biți de subrețea, ${hb} biți host. Identificator = ${sid.toString(2).padStart(sb,'0')}₂ = ${sid} → subrețeaua utilizabilă nr. ${sid}. Adresa subrețelei: ${ip2s(net)}; broadcast direct: ${ip2s(bc)}. Subrețele utilizabile: 2^${sb}−2 = ${2**sb-2}; echipamente/subrețea: 2^${hb}−2 = ${2**hb-2}. Adresă ${priv?'privată':'publică'}.`};
+  }
+}
+
+// ---------------- router ----------------
+function route(){
+  clearInterval(timerId);
+  const v=(location.hash||'#simulare').slice(1);
+  document.querySelectorAll('#nav a').forEach(a=>a.classList.toggle('on',a.dataset.v===v));
+  if(v==='flashcarduri')fcSetup();else if(v==='ghid')guide();else examSetup();
+  window.scrollTo(0,0);
+}
+window.addEventListener('hashchange',route);
+
+// ---------------- exam ----------------
+let cfg={mins:12,labs:new Set(LABS),gen:true,hot:true};
+function examSetup(){
+  st=null;
+  const counts={};BANK.forEach(q=>counts[q.t]=(counts[q.t]||0)+1);
+  $('#main').innerHTML=`
+  <div class="card accent">
+    <h2>Simulare examen</h2>
+    <div class="mute">10 întrebări aleatorii, cronometrate, exact ca la test. Fiecare întrebare poate avea <b style="color:#fff">0, 1, 2, 3 sau 4</b> variante corecte. Notarea e ca la test: o variantă greșită bifată = 0 pe întrebare; altfel primești proporțional cu variantele corecte bifate (ex. 1 din 2 corecte = jumătate).</div>
+    <div class="hero">
+      <div class="stat"><b>${BANK.length}</b><span>întrebări din laboratoare</span></div>
+      <div class="stat"><b>∞</b><span>probleme de subrețele generate</span></div>
+      <div class="stat"><b>1,20 p</b><span>punctaj maxim · 0,12 p / întrebare</span></div>
+      <div class="stat"><b>10 × 1 min</b><span>întrebări / timp la test</span></div>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Timp</h3>
+    <div class="seg" id="seg">${[8,10,12].map(m=>`<button class="${cfg.mins===m?'on':''}" onclick="cfg.mins=${m};examSetup()">${m} min${m===8?' · dur':''}</button>`).join('')}</div>
+    <h3 style="margin-top:18px">Capitole</h3>
+    <div class="chips">${LABS.map(t=>`<span class="chip ${cfg.labs.has(t)?'on':''}" onclick="togLab('${t}')">${esc(TOPICS[t])} <span class="mute">${counts[t]||0}</span></span>`).join('')}</div>
+    <div class="row" style="margin-top:12px"><span class="chip" onclick="cfg.labs=new Set(LABS);examSetup()">Toate</span><span class="chip" onclick="cfg.labs=new Set(['ip']);examSetup()">Doar Lab 7</span></div>
+    <label class="tg" style="margin-top:14px"><input type="checkbox" ${cfg.hot?'checked':''} onchange="cfg.hot=this.checked"> 🔥 Accent pe ce a picat la colegi: 2 capturi Wireshark, 2 switch/MAC, 2 IPv4</label>
+    <label class="tg" style="margin-top:8px"><input type="checkbox" ${cfg.gen?'checked':''} onchange="cfg.gen=this.checked"> Include 1–2 probleme de subrețele generate</label>
+    <div class="row" style="margin-top:20px"><button class="btn p big" onclick="startExam()" ${cfg.labs.size?'':'disabled'}>Începe simularea</button><span class="mute small"><span class="kbd">1</span>–<span class="kbd">4</span> bifează, <span class="kbd">←</span> <span class="kbd">→</span> navighează</span></div>
+  </div>`;
+}
+function togLab(t){cfg.labs.has(t)?cfg.labs.delete(t):cfg.labs.add(t);examSetup()}
+function inst(q){return {q,perm:shuffle([0,1,2,3]),sel:new Set()}}
+const corr=it=>it.perm.map((o,d)=>it.q.c.includes(o)?d:-1).filter(x=>x>=0);
+const right=it=>{const c=corr(it);return c.length===it.sel.size&&c.every(x=>it.sel.has(x))};
+const part=it=>{const c=corr(it);let s=0;for(let d=0;d<4;d++)if(c.includes(d)===it.sel.has(d))s++;return s/4};
+function startExam(){
+  const ng=cfg.gen&&(cfg.labs.has('ip')||!cfg.hot)?ri(1,2):0;
+  const chosen=[],ids=new Set();
+  const take=(arr,k)=>{for(const q of shuffle(arr)){if(k<=0||chosen.length>=10-ng)break;if(!ids.has(q.id)){ids.add(q.id);chosen.push(q);k--}}};
+  const av=BANK.filter(q=>cfg.labs.has(q.t));
+  if(cfg.hot){
+    take(av.filter(q=>q.t==='ws'),2);
+    take(av.filter(q=>/^(sw|mac|d17|d18|d2$|d4$)/.test(q.id)),2);
+    take(av.filter(q=>q.t==='ip'),Math.max(0,2-ng));
+  }
+  if(cfg.hot){take(av.filter(q=>q.t==='ws'),1);take(av.filter(q=>q.t!=='ws'),10)}else take(av,10);
+  const qs=chosen.concat(Array.from({length:Math.max(0,10-chosen.length)},genSubnet));
+  st={mode:'exam',items:shuffle(qs).map(inst),i:0,end:Date.now()+cfg.mins*60000,mins:cfg.mins};
+  timerId=setInterval(tick,500);renderExam();
+}
+const fmt=ms=>{const s=Math.max(0,Math.ceil(ms/1000));return `${String(s/60|0).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`};
+function tick(){if(!st||st.mode!=='exam')return;const left=st.end-Date.now();const el=$('#tmr');if(el){el.textContent=fmt(left);el.classList.toggle('low',left<120000)}if(left<=0)finishExam()}
+const PCOL={ARP:'#fafae0',DNS:'#daeeff',UDP:'#daeeff',TCP:'#e7e6ff',HTTP:'#e4ffc7',ICMP:'#fce0ff',STP:'#ffffff'};
+function wsHTML(w){
+  return `<div class="wsw"><div class="tb"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="flt ${w.filter?'on':''}">${w.filter?esc(w.filter):'<span class="fin">Apply a display filter … &lt;Ctrl-/&gt;</span>'}</span></div>
+  <div class="pl"><table><tr><th>No.</th><th>Time</th><th>Source</th><th>Destination</th><th>Protocol</th><th>Length</th><th>Info</th></tr>${w.rows.map((r,i)=>`<tr class="${i===w.sel?'sel':''}" style="background:${PCOL[r[4]]||'#fff'}">${r.map(c=>`<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</table></div>
+  <div class="dt">${w.tree.map(esc).join('\n')}</div>${w.hex&&w.hex.length?`<div class="hx">${w.hex.map(esc).join('\n')}</div>`:''}</div>`;
+}
+const QV=0.12;
+function pts(it){const c=corr(it);if([...it.sel].some(d=>!c.includes(d)))return 0;if(!c.length)return QV;return QV*it.sel.size/c.length}
+const f2=x=>x.toFixed(2).replace('.',',');
+function qHTML(it,n,rev){
+  const q=it.q,c=corr(it);
+  return `<div class="row between"><span class="pill">${esc(TOPICS[q.t])}</span><span class="mute small">Întrebarea ${n} / ${st.items.length}</span></div>
+  ${q.ws?wsHTML(q.ws):''}<div class="qn">${esc(q.q)}</div>${q.code?`<pre>${esc(q.code)}</pre>`:''}
+  ${it.perm.map((o,d)=>{let k='';if(rev){const ic=c.includes(d),s=it.sel.has(d);k=ic&&s?'ok':(!ic&&s?'bad':(ic?'miss':''))}else if(it.sel.has(d))k='sel';
+   return `<label class="opt ${k}"><input type="checkbox" ${it.sel.has(d)?'checked':''} ${rev?'disabled':''} onchange="tog(${d})"><span class="l">${L[d]})</span><span>${esc(q.o[o])}</span></label>`}).join('')}
+  ${rev?`<div class="verd ${right(it)?'ok':'bad'}">${right(it)?'✓ Corect':(pts(it)>0?'◐ Parțial':'✗ 0 puncte')} <span class="pts">${f2(pts(it))} / ${f2(QV)}</span> — variante corecte: ${c.length?c.map(d=>L[d]).join(', '):'niciuna'}</div><div class="exp">${esc(q.e)}</div>`:`<div class="mute small">Nicio bifă = „niciun răspuns corect”.</div>`}`;
+}
+function tog(d){const it=st.items[st.i];it.sel.has(d)?it.sel.delete(d):it.sel.add(d);renderExam()}
+function go(k){if(k<0||k>=st.items.length)return;st.i=k;st.mode==='exam'?renderExam():renderReview()}
+function renderExam(){
+  const it=st.items[st.i];
+  $('#main').innerHTML=`<div class="top"><button class="btn" onclick="if(confirm('Abandonezi simularea?'))route()">✕ Abandonează</button><span class="timer" id="tmr">${fmt(st.end-Date.now())}</span><button class="btn p" onclick="finishExam()">Predă testul</button></div>
+  <div class="card">${qHTML(it,st.i+1,false)}
+  <div class="row between" style="margin-top:14px"><button class="btn" ${st.i?'':'disabled'} onclick="go(${st.i-1})">← Înapoi</button><button class="btn" ${st.i<st.items.length-1?'':'disabled'} onclick="go(${st.i+1})">Înainte →</button></div>
+  <div class="grid">${st.items.map((x,k)=>`<button class="${k===st.i?'cur ':''}${x.sel.size?'ans':''}" onclick="go(${k})">${k+1}</button>`).join('')}</div></div>
+  <div class="mute small">Ritm: ~1 minut pe întrebare. Dacă stai peste 90 de secunde pe una, bifează ce știi sigur și treci mai departe.</div>`;
+}
+function finishExam(){
+  if(!st||st.mode!=='exam')return;clearInterval(timerId);
+  const used=Math.round((st.mins*60000-Math.max(0,st.end-Date.now()))/1000);
+  let s=0,p=0;st.items.forEach(it=>{if(right(it))s++;p+=pts(it)});
+  st.mode='review';st.i=0;st.res={s,p,used};renderReview();
+}
+function renderReview(){
+  const it=st.items[st.i],r=st.res;
+  const pr=r.p/1.2;const verdict=pr>=.8?'Bun. Repetă până iese de 3 ori la rând.':pr>=.5?'Ești la jumătatea drumului. Citește explicațiile la fiecare greșeală.':'Nu ești gata încă. Treci prin Ghid și Flashcarduri, apoi revino.';
+  $('#main').innerHTML=`<div class="card accent"><div class="row" style="gap:34px;align-items:flex-end">
+    <div><div class="score">${f2(r.p)}<small> / 1,20 p</small></div><div class="mute small">punctaj, notare ca la test</div></div>
+    <div><div class="score">${r.s}<small>/10</small></div><div class="mute small">întrebări complet corecte</div></div>
+    <div><div class="score">${fmt(r.used*1000)}</div><div class="mute small">timp folosit</div></div></div>
+    <div style="margin-top:12px">${verdict}</div>
+    <div class="grid">${st.items.map((x,k)=>`<button class="${k===st.i?'cur ':''}${right(x)?'ok':(pts(x)>0?'half':'bad')}" onclick="go(${k})">${k+1}</button>`).join('')}</div>
+    <div class="row" style="margin-top:16px"><button class="btn p" onclick="startExam()">Încă o simulare</button><button class="btn" onclick="route()">Setări</button></div></div>
+  <div class="card">${qHTML(it,st.i+1,true)}
+  <div class="row between" style="margin-top:14px"><button class="btn" ${st.i?'':'disabled'} onclick="go(${st.i-1})">← Înapoi</button><button class="btn" ${st.i<st.items.length-1?'':'disabled'} onclick="go(${st.i+1})">Înainte →</button></div></div>`;
+}
+
+// ---------------- flashcards ----------------
+let fcLabs=new Set(LABS);
+function fcSetup(){
+  const n=CARDS.filter(c=>fcLabs.has(c[0])).length;
+  st={mode:'fc',deck:shuffle(CARDS.filter(c=>fcLabs.has(c[0]))),total:n,known:0,flip:false};
+  renderFC();
+}
+function togFC(t){fcLabs.has(t)?fcLabs.delete(t):fcLabs.add(t);fcSetup()}
+function renderFC(){
+  const chips=`<div class="chips" style="margin-bottom:12px">${LABS.map(t=>`<span class="chip ${fcLabs.has(t)?'on':''}" onclick="togFC('${t}')">${esc(TOPICS[t])}</span>`).join('')}<span class="chip" onclick="fcLabs=new Set(LABS);fcSetup()">Toate</span></div>`;
+  if(!st.total){$('#main').innerHTML=`<div class="card accent"><h2>Flashcarduri</h2>${chips}<div class="mute">Alege cel puțin un capitol.</div></div>`;return}
+  if(!st.deck.length){$('#main').innerHTML=`<div class="card accent"><h2>Flashcarduri</h2>${chips}<div class="score">${st.total}<small>/${st.total}</small></div><p>Ai trecut prin toate cardurile alese. Acum fă o simulare de examen.</p><div class="row"><button class="btn p" onclick="fcSetup()">Încă o tură</button><a class="btn" href="#simulare" style="text-decoration:none">Simulare examen</a></div></div>`;return}
+  const c=st.deck[0],done=st.known/st.total*100;
+  $('#main').innerHTML=`<div class="card accent"><h2>Flashcarduri</h2><div class="mute small" style="margin-bottom:12px">Citește întrebarea, spune răspunsul în gând, apoi întoarce cardul. Ce nu știai revine după câteva carduri.</div>${chips}
+  <div class="row between small"><span class="mute">Știute: <b style="color:#fff">${st.known}</b> / ${st.total}</span><span class="mute">Rămase: ${st.deck.length}</span></div><div class="prog"><i style="width:${done}%"></i></div></div>
+  <div class="fcwrap"><div class="fc ${st.flip?'flip':''}" id="fc" onclick="flip()">
+    <div class="face front"><span class="pill">${esc(TOPICS[c[0]])}</span><div class="q">${esc(c[1])}</div><div class="mute small" style="margin-top:18px">Apasă sau <span class="kbd">Space</span> ca să întorci</div></div>
+    <div class="face back"><div class="q2">${esc(c[1])}</div><div class="a">${esc(c[2])}</div></div>
+  </div></div>
+  <div class="row" style="justify-content:center"><button class="btn" onclick="ans(0)" ${st.flip?'':'disabled'}>✗ Nu știam <span class="kbd">←</span></button><button class="btn p" onclick="ans(1)" ${st.flip?'':'disabled'}>✓ Știam <span class="kbd">→</span></button></div>`;
+}
+function flip(){st.flip=!st.flip;$('#fc').classList.toggle('flip',st.flip);document.querySelectorAll('.fcwrap ~ .row .btn').forEach(b=>b.disabled=!st.flip)}
+function ans(k){if(!st.flip)return;const c=st.deck.shift();if(k)st.known++;else st.deck.splice(Math.min(4,st.deck.length),0,c);st.flip=false;renderFC()}
+
+// ---------------- keyboard ----------------
+document.addEventListener('keydown',e=>{
+  if(!st)return;
+  if(st.mode==='fc'){if(e.key===' '){e.preventDefault();flip()}else if(e.key==='ArrowRight')ans(1);else if(e.key==='ArrowLeft')ans(0);return}
+  if(st.mode==='exam'&&['1','2','3','4'].includes(e.key))tog(+e.key-1);
+  if(st.mode==='exam'||st.mode==='review'){if(e.key==='ArrowRight')go(st.i+1);if(e.key==='ArrowLeft')go(st.i-1)}
+});
+
+// ---------------- guide ----------------
+const S=n=>`<span class="stars">${'★'.repeat(n)}<span class="o">${'★'.repeat(3-n)}</span></span>`;
+function labTable(rows){return `<table><tr><th>Unde</th><th>Ce</th><th>Importanță</th></tr>${rows.map(r=>`<tr><td class="pg">${r[0]}</td><td>${r[1]}</td><td>${S(r[2])}</td></tr>`).join('')}</table>`}
+function guide(){
+  st=null;
+  $('#main').innerHTML=`
+  <div class="card accent"><h2>Ce învăț și cum</h2>
+    <div class="mute">Paginile sunt numerele din PDF-urile laboratoarelor. ${S(3)} = pică sigur · ${S(2)} = probabil · ${S(1)} = doar o citire.</div>
+    <div class="toc" style="margin-top:14px">${[['picat','🔥 Ce a picat'],['punct','Punctaj'],['plan','Plan de învățare'],['l7','Lab 7 IPv4'],['l3','Lab 3 Echipamente'],['l4','Lab 4 Cablare'],['l5','Lab 5 Ethernet'],['l6','Lab 6 WLAN'],['l2','Lab 2 OSI'],['rapid','Metode rapide'],['tactic','Tactica la test'],['nr','Numere de știut']].map(x=>`<a class="chip" style="text-decoration:none" href="javascript:document.getElementById('${x[0]}').scrollIntoView()">${x[1]}</a>`).join('')}</div>
+  </div>
+
+  <div class="card accent" id="picat"><h3>🔥 Ce a picat la colegi</h3>
+    <ol class="steps">
+      <li><b>Câți octeți are adresa MAC</b> → 6 octeți = 48 biți = 12 cifre hexa (OUI = primii 3 octeți).</li>
+      <li><b>Capturi Wireshark</b> (screenshot) cu „ce reprezintă” anumite câmpuri: coloanele din listă, Type/Ethertype, câmpurile ARP, porturi, Length, Padding, octeții din panoul hexa. Fă secțiunea „Capturi Wireshark” din simulare.</li>
+      <li><b>Switch și tabela MAC</b>: cum învață (din MAC-ul sursă), ce face cu destinația necunoscută sau broadcast (trimite pe toate porturile mai puțin cel de intrare), cum citești show mac-address-table.</li>
+      <li><b>IPv4</b>: clase, private/publice, subrețele (metoda rapidă de mai jos).</li>
+    </ol>
+  </div>
+
+  <div class="card" id="punct"><h3>Cum se punctează</h3>
+    <ol class="steps">
+      <li>10 întrebări, <b>1,20 puncte în total</b> (0,12 p pe întrebare), direct din nota de examen.</li>
+      <li>Fiecare întrebare are 0, 1, 2, 3 sau 4 variante corecte.</li>
+      <li><b>O singură variantă greșită bifată = 0 puncte</b> pe întrebare, chiar dacă le-ai bifat și pe cele corecte.</li>
+      <li>Fără greșeli, primești proporțional: 1 din 2 corecte = 0,06 p; 2 din 3 = 0,08 p; toate = 0,12 p.</li>
+      <li><b>Consecința tactică:</b> bifează doar ce știi sigur. O bifă „la noroc” îți poate anula puncte pe care le aveai deja.</li>
+    </ol>
+  </div>
+
+  <div class="card" id="plan"><h3>Plan de învățare</h3>
+    <ol class="steps">
+      <li><b>Flashcarduri, prima tură (~30 min).</b> Nu rescrie slide-urile. Notează doar ce marchezi „Nu știam”.</li>
+      <li><b>Citește doar paginile ${S(3)}</b> de mai jos, începând cu capitolele unde ai greșit.</li>
+      <li><b>Lab 7 separat:</b> refă pe hârtie Problema 1 (p. 16–20) fără să te uiți, apoi bifează doar „Doar Lab 7” la simulare până faci sub 60 s pe întrebare.</li>
+      <li><b>Flashcarduri, a doua tură,</b> până nu mai ai niciun „Nu știam”.</li>
+      <li><b>Simulări la 10 minute.</b> Criteriul de „gata”: <b>≥ 8/10 strict, de 3 ori la rând</b>. După fiecare simulare citește explicația la TOATE greșelile.</li>
+      <li><b>Dimineața testului:</b> o tură de flashcarduri, 10 minute. Nimic nou.</li>
+    </ol>
+  </div>
+
+  <div class="card lab" id="l7"><h3>Lab 7 – Adrese IPv4 <span class="imp">cel mai important · are calcule</span></h3>${labTable([
+    ['p. 4, 7','Clasele: biții de început și intervalele primului octet',3],
+    ['p. 8','Adresele private (10 · 172.16–31 · 192.168)',3],
+    ['p. 5–6','Nr. de rețele/echipamente pe clase; de ce se scade 2 (adresa de rețea, broadcast direct); broadcast local',3],
+    ['p. 16–20','Problema 1 rezolvată complet (identificator, adresă subrețea, broadcast, a câta subrețea)',3],
+    ['p. 25','Prima și ultima subrețea nu se folosesc → 2ⁿ−2, minim 2 biți',3],
+    ['p. 13–15','Regula măștii, măștile implicite, cum afli biții de subrețea',2],
+    ['p. 21–24','Demonstrația pentru subrețeaua 0 și 15',2],
+    ['p. 3, 9–12','Format zecimal cu punct, proprietăți adrese private, motivația subrețelelor',1]])}</div>
+
+  <div class="card lab" id="l3"><h3>Lab 3 – Echipamente de interconectare</h3>${labTable([
+    ['p. 15','Adresa MAC: 48 biți, 12 cifre hexa, OUI (24 biți), bitul U/L (7) și I/G (8)',3],
+    ['p. 3, 5, 18','Hub (Fizic, repetor multiport) · Placa de rețea (Legături de date) · Switch (Legături de date, doar pe portul destinației)',3],
+    ['p. 22–26','show interface · show version · show flash · show mac-address-table',3],
+    ['p. 14, 17','getmac / ipconfig /all; la mutarea în altă rețea se schimbă IP-ul, nu MAC-ul',2],
+    ['p. 9, 12, 20','Ce arată Details; opțiunile IPv4; Catalyst C2950 (L2, 24 porturi 10/100, Cisco IOS)',2],
+    ['p. 6, 10, 13, 16, 19, 21, 27','Calea în Control Panel, cont Administrator, ip addr, OUI online, interfață serială, tasta ?, Packet Tracer',1]])}</div>
+
+  <div class="card lab" id="l4"><h3>Lab 4 – Cablare structurată</h3>${labTable([
+    ['p. 3','Patch cord: 3 m zona de lucru · max 6 m dulap · 10 m total; multifilar, atenuare mai mare',3],
+    ['p. 8','Straight-through (tipuri diferite) vs crossover (același tip); infrastructură = switch, bridge, hub; terminale = PC, router',3],
+    ['p. 12–13','Legătura de bază vs canal; cei 4 parametri testați; max 90 m',3],
+    ['p. 9–11','Clește de sertizare (RJ11/RJ45), punch-down tool, 13 mm, toate 4 perechile',2],
+    ['p. 14','Echipamente de test; OTDR (fibră optică)',2],
+    ['p. 6–7, 15–16','Imaginile cu conectorizarea; Fluke MicroScanner2 Pro',1]])}</div>
+
+  <div class="card lab" id="l5"><h3>Lab 5 + fișa Laborator Ethernet</h3>${labTable([
+    ['Fișa Ethernet p. 1','Preambul/SFD/FCS filtrate de placă; Ethertype; minim 64 octeți + Pad; întrebările a–g',3],
+    ['Fișa Ethernet p. 2–3','Broadcast/multicast, filtrul eth.dst[0] & 1; IEEE 802.3 vs Ethernet, LLC, filtrul llc',3],
+    ['Lab 5 p. 10–11','De ce MAC destinație e prima; 802.3 cu 38 octeți de date → 8 octeți padding; antetul 802.2',3],
+    ['Lab 5 p. 7, 9','Resolve MAC addresses, promiscuous mode, capture filter; cele 3 panouri',2],
+    ['Lab 5 p. 3–8','Ce e Wireshark, cum pornești captura',1]])}</div>
+
+  <div class="card lab" id="l6"><h3>Lab 6 + fișa Laborator Wireless</h3>${labTable([
+    ['Lab 6 p. 4–6','Beacon: cadru de management, broadcast, BSSID = sursa; interval, SSID, canal, rate',3],
+    ['Lab 6 p. 10–13','Basic Wireless Settings; securitate (WPA/WPA2, nu WEP); SSID ascuns; filtrare MAC și de ce nu protejează',3],
+    ['Fișa Wireless','Cadrul 1 (Beacon) și cadrul 431 (sursa ≠ BSSID → nu e de la AP); cerințele din Packet Tracer',2],
+    ['Lab 6 p. 3, 7–9, 14','AirPcap; configurare prin server web; Setup → Basic Setup; politici de restricționare',2]])}</div>
+
+  <div class="card lab" id="l2"><h3>Laborator OSI-TCP/IP (o pagină)</h3>${labTable([
+    ['Întrebările 1–3','Rolul straturilor, încapsularea, tabelul OSI ↔ TCP/IP ↔ PDU',3],
+    ['Întrebările 3, 6–9','Pe ce strat e Ethernet, IP, UDP, TCP, DNS, ICMP; cine folosește MAC, IP, port',3],
+    ['Întrebările 1b–c, 2, 4–5','Frame vs Ethernet II; de ce lipsesc straturi; pachet ARP vs HTTP; handshake TCP',2]])}</div>
+
+  <div class="two">
+  <div class="card" id="rapid"><h3>Metode rapide – subrețele</h3>
+    <ol class="steps">
+      <li><b>Clasa:</b> primul octet &lt;128 → A (/8), 128–191 → B (/16), 192–223 → C (/24). Regula cu biții (0, 10, 110) se aplică pe octetul scris în <b>binar</b>, nu pe cifrele zecimale.</li>
+      <li><b>Prefixul măștii:</b> 128=1, 192=2, 224=3, 240=4, 248=5, 252=6, 254=7, 255=8 biți.</li>
+      <li><b>Biți subrețea</b> = prefix − prefixul clasei → <b>2ⁿ−2</b> subrețele. <b>Biți host</b> = 32 − prefix → <b>2ʰ−2</b> echipamente.</li>
+      <li><b>Bloc</b> = 256 − octetul „interesant” al măștii (nici 255, nici 0).</li>
+      <li><b>Subrețea</b> = cel mai mare multiplu de bloc ≤ octetul adresei; octeții de după → 0.</li>
+      <li><b>Broadcast</b> = subrețea + bloc − 1; octeții de după → 255.</li>
+      <li><b>A câta</b> (clasele B/C): valoare ÷ bloc. Id 0 și id maxim nu se folosesc.</li>
+    </ol>
+    <div class="exp">Ex: 172.27.214.165 / 255.255.240.0 → B, 4 biți, bloc 16 → 208 → 172.27.208.0, broadcast 172.27.223.255, 208÷16 = 13 → a 13-a utilizabilă.</div>
+  </div>
+  <div class="card"><h3>Metode rapide – restul</h3>
+    <ol class="steps">
+      <li><b>Privat/public:</b> privată doar dacă e 10.x, 172.16–31.x sau 192.168.x. Clasa NU spune nimic. 172.15, 172.32 și 192.169 sunt publice.</li>
+      <li><b>MAC multicast:</b> a 2-a cifră hexa impară (01, 33, FF…) → I/G = 1.</li>
+      <li><b>MAC local:</b> a 2-a cifră hexa 2, 3, 6, 7, A, B, E, F → U/L = 1.</li>
+      <li><b>Ethernet II vs 802.3:</b> câmpul de 2 octeți ≤ 1500 → lungime → 802.3 + LLC; ≥ 0x0600 → Ethertype.</li>
+      <li><b>Cablu:</b> același tip → crossover; tipuri diferite → straight. Routerul e „terminal”, ca PC-ul.</li>
+      <li><b>Cadru 802.11 de la AP?</b> Doar dacă Source = BSS Id.</li>
+      <li><b>Spre altă rețea:</b> IP dest = stația finală; MAC dest = gateway-ul.</li>
+    </ol>
+  </div>
+  </div>
+
+  <div class="card" id="tactic"><h3>Tactica la test</h3>
+    <ol class="steps">
+      <li><b>Nu bifa la noroc.</b> O variantă greșită anulează toată întrebarea; o variantă corectă lăsată nebifată doar îți scade puțin punctajul.</li>
+      <li><b>Fiecare întrebare = 4 întrebări adevărat/fals independente.</b> Nu căuta „răspunsul”, judecă fiecare variantă. „Toate 4” și „niciuna” apar.</li>
+      <li><b>Capcanele sunt cuvinte schimbate:</b> „al 14-lea” vs „al 13-lea utilizabil”, 14 vs 18 octeți, WEP vs WPA, Fizic vs Legături de date, „șterge” vs „ascunde”. Citește ultimul cuvânt al variantei.</li>
+      <li><b>La întrebări cu date</b> (capturi, tabele, adrese): întâi variantele care se verifică prin numărat (clasă, privat, nr. biți), apoi cele cu calcul.</li>
+      <li><b>Peste 90 de secunde pe o întrebare</b> → bifezi ce știi sigur și treci mai departe.</li>
+    </ol>
+  </div>
+
+  <div class="card" id="nr"><h3>Numere de știut pe de rost</h3>
+    <table>
+      <tr><td>Ethertype</td><td>0x0800 IPv4 · 0x0806 ARP · 0x86DD IPv6</td></tr>
+      <tr><td>Cadru Ethernet</td><td>antet 14 octeți · LLC 3 octeți · minim 64 octeți (date minim 46) · Length ≤ 1500</td></tr>
+      <tr><td>MAC</td><td>48 biți · 12 cifre hexa · OUI 24 biți · broadcast FF:FF:FF:FF:FF:FF</td></tr>
+      <tr><td>Cablare</td><td>3 m / 6 m / 10 m patch cord · 90 m legătura · 13 mm netorsadat · 4 perechi</td></tr>
+      <tr><td>IPv4</td><td>32 biți · A 0–127 · B 128–191 · C 192–223 · D 224–239 · privat 10 / 172.16–31 / 192.168</td></tr>
+      <tr><td>Rețele / echip.</td><td>A 2⁷−2 / 2²⁴−2 · B 2¹⁴ / 2¹⁶−2 · C 2²¹ / 2⁸−2 = 254</td></tr>
+      <tr><td>Beacon</td><td>interval ~0,1024 s · WEP 40 biți = 10 cifre hexa</td></tr>
+      <tr><td>Porturi</td><td>HTTP 80 · HTTPS 443 · DNS 53</td></tr>
+    </table>
+  </div>`;
+}
+route();
+</script>
+</body>
+</html>
